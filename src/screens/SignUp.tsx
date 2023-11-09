@@ -12,7 +12,20 @@ import BackgroundImage from "@assets/background.png";
 import IconApplication from '@assets/icon.png';
 
 import { Button } from '@components/Button';
-export function SignUp() {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from 'src/routes/StackRoute';
+
+type SignUpProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>
+
+export function SignUp({ navigation }: SignUpProps) {
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
+  function handleNavigatePlans() {
+    navigation.navigate('Plans')
+  }
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -91,32 +104,37 @@ export function SignUp() {
             mt={8}
           />
 
-          <Text
-            fontFamily="inriaRegular"
-            color="white"
-            fontSize="20px"
-            textAlign="center"
-            w="80%"
-            mt={6}
+          <ButtonNativeBase
+            variant="link"
+            onPress={handleNavigatePlans}
+            w="90%"
           >
-            Conheça nossos planos, e
             <Text
-              color="teal.300"
-            > ative seu acesso </Text>
-            aos audiobooks.
-          </Text>
-
+              fontFamily="inriaRegular"
+              color="white"
+              fontSize="20px"
+              textAlign="center"
+              mt={6}
+            >
+              Conheça nossos planos, e
+              <Text
+                color="teal.300"
+              > ative seu acesso </Text>
+              aos audiobooks.
+            </Text>
+          </ButtonNativeBase>
           <Box w="100%" alignItems="flex-start" mt={8}>
             <ButtonNativeBase
-              bg="transparent"
-              _pressed={{ bg: "transparent" }}
-              _text={{
-                color: "white",
-                fontSize: "20px",
-                fontFamily: "inriaRegular"
-              }}
+              variant="link"
+              onPress={handleGoBack}
             >
-              {'< Voltar'}
+              <Text
+                fontFamily="inriaRegular"
+                color="white"
+                fontSize="20px"
+              >
+                {'< Voltar'}
+              </Text>
             </ButtonNativeBase>
           </Box>
         </VStack>

@@ -1,10 +1,23 @@
-import { Image, Text, VStack } from "native-base";
+import { Button as ButtonNativeBase, Image, Text, VStack } from "native-base";
 
 import { Button } from "@components/Button";
 
 import BackgroundImage from "@assets/background.png";
 import IconApplication from '@assets/icon.png';
-export function InitialSignIn() {
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "src/routes/StackRoute";
+
+type InitialSignInProps = NativeStackScreenProps<RootStackParamList, 'InitialSignIn'>
+
+export function InitialSignIn({ navigation }: InitialSignInProps) {
+  function handleNavigateSignIn() {
+    navigation.navigate('SignIn')
+  }
+
+  function handleNavigateSignUp() {
+    navigation.navigate('SignUp')
+  }
+
   return (
     <VStack flex={1} alignItems="center" justifyContent="flex-start" px={30}>
       <Image
@@ -38,14 +51,22 @@ export function InitialSignIn() {
         height={52}
         mt={12}
         title="Acessar"
+        onPress={handleNavigateSignIn}
       />
-      <Text
-        fontFamily="inriaRegular"
-        color="white"
-        fontSize="22px"
-        lineHeight="40px"
-        marginTop="6px"
-      >Ainda não sou cadastrado</Text>
+      <ButtonNativeBase
+        variant="link"
+        onPress={handleNavigateSignUp}
+      >
+        <Text
+          fontFamily="inriaRegular"
+          color="white"
+          fontSize="22px"
+          lineHeight="40px"
+          marginTop="6px"
+        >
+          Ainda não sou cadastrado
+        </Text>
+      </ButtonNativeBase>
     </VStack>
   )
 }

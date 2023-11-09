@@ -1,5 +1,12 @@
 import { Input } from '@components/Input';
-import { Box, Checkbox, Icon, Image, ScrollView, Text, VStack } from "native-base";
+import {
+  Box, Button as ButtonNativeBase, Checkbox,
+  Icon,
+  Image,
+  ScrollView,
+  Text,
+  VStack
+} from "native-base";
 
 import AppleSvg from '@assets/appleSvg.svg';
 import BackgroundImage from "@assets/background.png";
@@ -9,8 +16,16 @@ import IconApplication from '@assets/icon.png';
 
 import { Button } from '@components/Button';
 import { SignInSocialButton } from '@components/SignInSocialButton';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from 'src/routes/StackRoute';
 
-export function SignIn() {
+type SignInProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>
+
+export function SignIn({ navigation }: SignInProps) {
+  function handleNavigateSignUp() {
+    navigation.navigate('SignUp')
+  }
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -104,13 +119,20 @@ export function SignIn() {
             h="40px"
             mt={6}
           />
-          <Text
-            fontFamily="inriaRegular"
-            color="white"
-            fontSize="22px"
-            lineHeight="40px"
-            marginTop="6px"
-          >Ainda não sou cadastrado</Text>
+          <ButtonNativeBase
+            variant="link"
+            onPress={handleNavigateSignUp}
+          >
+            <Text
+              fontFamily="inriaRegular"
+              color="white"
+              fontSize="22px"
+              lineHeight="40px"
+              marginTop="6px"
+            >
+              Ainda não sou cadastrado
+            </Text>
+          </ButtonNativeBase>
         </VStack>
       </VStack>
     </ScrollView>

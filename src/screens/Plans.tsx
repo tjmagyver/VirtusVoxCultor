@@ -5,8 +5,16 @@ import PaymentsMethodsImage from '@assets/paymentsMethods.png';
 
 import { Button } from "@components/Button";
 import { CardPlans } from "@components/CardPlans";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "src/routes/StackRoute";
 
-export function Plans() {
+type PlansProps = NativeStackScreenProps<RootStackParamList, 'Plans'>
+
+export function Plans({ navigation }: PlansProps) {
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     // i want remove scroll bar indicador
     <ScrollView
@@ -79,15 +87,16 @@ export function Plans() {
 
           <Box w="100%" alignItems="flex-start" mt={5}>
             <ButtonNativeBase
-              bg="transparent"
-              _pressed={{ bg: "transparent" }}
-              _text={{
-                color: "white",
-                fontSize: "20px",
-                fontFamily: "inriaRegular"
-              }}
+              variant="link"
+              onPress={handleGoBack}
             >
-              {'< Voltar'}
+              <Text
+                fontFamily="inriaRegular"
+                color="white"
+                fontSize="20px"
+              >
+                {'< Voltar'}
+              </Text>
             </ButtonNativeBase>
           </Box>
         </VStack>

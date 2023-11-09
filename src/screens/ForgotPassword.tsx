@@ -6,7 +6,16 @@ import BackgroundImage from "@assets/background.png";
 import IconApplication from '@assets/icon.png';
 
 import { Button } from '@components/Button';
-export function ForgotPassword() {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from 'src/routes/StackRoute';
+
+type ForgotPasswordProps = NativeStackScreenProps<RootStackParamList, 'ForgotPassword'>
+
+export function ForgotPassword({ navigation }: ForgotPasswordProps) {
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     <VStack flex={1} alignItems="center" justifyContent="flex-start" px={30}>
       <Image
@@ -73,15 +82,16 @@ export function ForgotPassword() {
 
         <Box w="100%" alignItems="flex-start" mt={8}>
           <ButtonNativeBase
-            bg="transparent"
-            _pressed={{ bg: "transparent" }}
-            _text={{
-              color: "white",
-              fontSize: "20px",
-              fontFamily: "inriaRegular"
-            }}
+            variant="link"
+            onPress={handleGoBack}
           >
-            {'< Voltar'}
+            <Text
+              fontFamily="inriaRegular"
+              color="white"
+              fontSize="20px"
+            >
+              {'< Voltar'}
+            </Text>
           </ButtonNativeBase>
         </Box>
       </VStack>

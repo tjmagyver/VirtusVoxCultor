@@ -13,8 +13,9 @@ import {
 import { Jost_400Regular } from '@expo-google-fonts/jost';
 import { Kreon_400Regular } from '@expo-google-fonts/kreon';
 
-import { SignIn } from '@screens/SignIn';
+import { NavigationContainer } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
+import { StackRoute } from './src/routes/StackRoute';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -54,15 +55,17 @@ export default function App() {
   }
 
   return (
-    <NativeBaseProvider theme={THEME}>
-      <View onLayout={onLayoutRootView} flex={1}>
-        <SignIn />
-      </View>
-      <StatusBar 
-        style="dark" 
-        translucent 
-        backgroundColor='transparent' 
-      />
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider theme={THEME}>
+        <View onLayout={onLayoutRootView} flex={1}>
+          <StackRoute />
+        </View>
+        <StatusBar
+          style="dark"
+          translucent
+          backgroundColor='transparent'
+        />
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 }
