@@ -14,7 +14,8 @@ export const THEME = extendTheme({
       400: '#323238',
       300: '#868484',
       200: '#C4C4CC',
-      100: '#D9D9D9'
+      100: '#D9D9D9',
+      50: '#F5F5F5',
     },
     white: '#FFFFFF',
     teal: {
@@ -26,7 +27,8 @@ export const THEME = extendTheme({
     },
     blue: {
       500: '#3159A5',
-    }
+    },
+    background: '#EBEBEB',
   },
   fonts: {
     heading: 'Kreon_400Regular',

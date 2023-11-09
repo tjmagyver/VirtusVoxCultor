@@ -7,7 +7,8 @@
       "@dtos/*": ["src/dtos/*"],
       "@components/*": ["src/components/*"],
       "@screens/*": ["src/screens/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@routes/*": ["src/routes/*"],
     }
   }
 }
