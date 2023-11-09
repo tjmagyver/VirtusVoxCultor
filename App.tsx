@@ -14,7 +14,7 @@ import { Jost_400Regular } from '@expo-google-fonts/jost';
 import { Kreon_400Regular } from '@expo-google-fonts/kreon';
 
 import { SignIn } from '@screens/SignIn';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 SplashScreen.preventAutoHideAsync();
 

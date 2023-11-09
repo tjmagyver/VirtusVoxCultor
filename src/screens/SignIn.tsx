@@ -1,88 +1,118 @@
 import { Input } from '@components/Input';
-import { Box, Checkbox, Image, Text, VStack } from "native-base";
+import { Box, Checkbox, Icon, Image, ScrollView, Text, VStack } from "native-base";
 
+import AppleSvg from '@assets/appleSvg.svg';
 import BackgroundImage from "@assets/background.png";
+import FacebookSvg from '@assets/facebookSvg.svg';
+import GoogleSvg from '@assets/googleSvg.svg';
 import IconApplication from '@assets/icon.png';
+
+import { Button } from '@components/Button';
+import { SignInSocialButton } from '@components/SignInSocialButton';
+
 export function SignIn() {
   return (
-    <VStack flex={1} alignItems="center" justifyContent="flex-start" px={30}>
-      <Image
-        source={BackgroundImage}
-        alt="Biblioteca"
-        resizeMode="contain"
-        position="absolute"
-      />
-      <Image
-        source={IconApplication}
-        alt="Ícone da aplicação"
-        resizeMode="cover"
-        marginTop="60px"
-        w="210px"
-        h="210px"
-      />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+    >
+      <VStack flex={1} alignItems="center" justifyContent="flex-start" px={30} pb={14}>
+        <Image
+          source={BackgroundImage}
+          alt="Biblioteca"
+          resizeMode="contain"
+          position="absolute"
+        />
+        <Image
+          source={IconApplication}
+          alt="Ícone da aplicação"
+          resizeMode="contain"
+          marginTop="60px"
+          w="180px"
+          h="180px"
+        />
 
-      <Text
-        fontFamily="Kreon_400Regular"
-        color="white"
-        fontSize="30px"
-        textAlign="center"
-        lineHeight="40px"
-        w="246px"
-        marginTop="24px"
-      >
-        O acervo da editora Cultor de Livros, como conselhos ao pé do ouvido.
-      </Text>
-      <VStack alignItems="center" justifyContent="flex-start" w="100%" mt="24px">
-        <Box w="80%">
-          <Text
-            fontFamily="InriaSans_400Regular"
-            color="white"
-            fontSize="15px"
-            textAlign="center"
-            lineHeight="40px"
-          >Login ou e-mail</Text>
-          <Input />
-        </Box>
-        <Box w="80%">
-          <Text
-            fontFamily="InriaSans_400Regular"
-            color="white"
-            fontSize="15px"
-            textAlign="center"
-            lineHeight="40px"
-          >Senha</Text>
-          <Input />
-          <Text
-            fontFamily="InriaSans_400Regular"
-            color="#00F0FF"
-            fontSize="12px"
-            textAlign="right"
-            lineHeight="40px"
-          >*Esqueci minha senha</Text>
-          <Box flexDir="row" alignItems="center" mt="-8px">
-            <Checkbox
-              value="one"
-              colorScheme="teal"
-              size="sm"
-              aria-label="Lembrar de mim"
-            />
+        <VStack mt={'60px'}>
+          <SignInSocialButton
+            bg="white"
+            textColor='gray.900'
+            title="Entre com Google"
+            icon={<Icon as={GoogleSvg} name="Google Svg" size="sm" />}
+          />
+          <SignInSocialButton
+            mt="15px"
+            bg="black"
+            borderColor="white"
+            borderWidth={1}
+            textColor='white'
+            title="Entre com ID Apple"
+            icon={<Icon as={AppleSvg} name="Apple Svg" size="sm" />}
+          />
+          <SignInSocialButton
+            mt="15px"
+            bg="blue.500"
+            textColor='white'
+            title="Entre com Facebook"
+            icon={<Icon as={FacebookSvg} name="Facebook Svg" size="sm" />}
+          />
+        </VStack>
+        <VStack alignItems="center" justifyContent="flex-start" w="100%" mt="24px">
+          <Box w="80%">
             <Text
-              fontFamily="InriaSans_400Regular"
+              fontFamily="inriaRegular"
               color="white"
-              fontSize="12px"
+              fontSize="15px"
+              textAlign="center"
               lineHeight="40px"
-              marginLeft="6px"
-            >Lembrar de mim</Text>
+            >Login ou e-mail</Text>
+            <Input />
           </Box>
-        </Box>
-        <Text
-          fontFamily="InriaSans_400Regular"
-          color="white"
-          fontSize="22px"
-          lineHeight="40px"
-          marginTop="6px"
-        >Ainda não sou cadastrado</Text>
+          <Box w="80%">
+            <Text
+              fontFamily="inriaRegular"
+              color="white"
+              fontSize="15px"
+              textAlign="center"
+              lineHeight="40px"
+            >Senha</Text>
+            <Input type="password" />
+            <Text
+              fontFamily="inriaRegular"
+              color="#00F0FF"
+              fontSize="12px"
+              textAlign="right"
+              lineHeight="40px"
+            >*Esqueci minha senha</Text>
+            <Box flexDir="row" alignItems="center" mt="-8px">
+              <Checkbox
+                value="one"
+                colorScheme="teal"
+                size="sm"
+                aria-label="Lembrar de mim"
+              />
+              <Text
+                fontFamily="inriaRegular"
+                color="white"
+                fontSize="12px"
+                lineHeight="40px"
+                marginLeft="6px"
+              >Lembrar de mim</Text>
+            </Box>
+          </Box>
+          <Button
+            title="Entrar"
+            w="80%"
+            h="40px"
+            mt={6}
+          />
+          <Text
+            fontFamily="inriaRegular"
+            color="white"
+            fontSize="22px"
+            lineHeight="40px"
+            marginTop="6px"
+          >Ainda não sou cadastrado</Text>
+        </VStack>
       </VStack>
-    </VStack>
+    </ScrollView>
   )
 }

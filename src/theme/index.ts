@@ -23,6 +23,9 @@ export const THEME = extendTheme({
     red: {
       500: '#F75A68',
       900: '#90303D'
+    },
+    blue: {
+      500: '#3159A5',
     }
   },
   fonts: {
