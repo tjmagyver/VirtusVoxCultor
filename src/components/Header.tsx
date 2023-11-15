@@ -1,11 +1,18 @@
-import { HStack, Image, Text, VStack } from "native-base";
+import { Button, HStack, Image, Modal, Text, VStack } from "native-base";
+import { useState } from "react";
 
 import OptionsIconImage from '@assets/optionsIcon.png';
 import ProfileIconImage from '@assets/profileIcon.png';
 import SearchIconImage from '@assets/searchIcon.png';
 import VirtusIconInactiveImage from '@assets/virtusIconInactive.png';
+import { CardToggleSubscription } from "./CardToggleSubscription";
 
 export function Header() {
+  const [
+    showModalCardToggleSubscription,
+    setShowModalCardToggleSubscription
+  ] = useState(false);
+
   return (
     <HStack
       bg="gray.900"
@@ -16,35 +23,56 @@ export function Header() {
       alignItems="center"
       justifyContent="space-between"
     >
-      <HStack
-        alignItems="center"
+      <Button
+        variant="unstyled"
+        px={0}
+        py={0}
+        onPress={() => setShowModalCardToggleSubscription(true)}
       >
-        <Image
-          source={VirtusIconInactiveImage}
-          alt="Ícone da aplicação inativo"
-          resizeMode="contain"
-          w="44px"
-          h="44px"
-          mr="9px"
-        />
+        <HStack
+          alignItems="center"
+        >
+          <Image
+            source={VirtusIconInactiveImage}
+            alt="Ícone da aplicação inativo"
+            resizeMode="contain"
+            w="44px"
+            h="44px"
+            mr="9px"
+          />
 
-        <VStack>
-          <Text
-            fontSize="12px"
-            fontFamily="inriaRegular"
-            color="white"
-          >
-            Status:
-          </Text>
-          <Text
-            fontSize="14px"
-            fontFamily="inriaRegular"
-            color="gray.300"
-          >
-            Desativada
-          </Text>
-        </VStack>
-      </HStack>
+          <VStack>
+            <Text
+              fontSize="12px"
+              fontFamily="inriaRegular"
+              color="white"
+            >
+              Status:
+            </Text>
+            <Text
+              fontSize="14px"
+              fontFamily="inriaRegular"
+              color="gray.300"
+            >
+              Desativada
+            </Text>
+          </VStack>
+        </HStack>
+      </Button>
+
+      <Modal 
+        isOpen={showModalCardToggleSubscription}
+        onClose={() => setShowModalCardToggleSubscription(false)}
+      >
+        <Modal.Content
+          position="absolute"
+          top="89px"
+          bg="gray.900"
+          w="366px"
+        >
+          <CardToggleSubscription />
+        </Modal.Content>
+      </Modal>
 
       <HStack
         alignItems="center"
