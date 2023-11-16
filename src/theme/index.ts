@@ -16,11 +16,13 @@ export const THEME = extendTheme({
       350: '#767879',
       300: '#868484',
       200: '#C4C4CC',
+      150: '#D2D3D5',
       100: '#D9D9D9',
       50: '#F5F5F5',
     },
     white: '#FFFFFF',
     teal: {
+      100: '#86C2C1',
       300: '#00F0FF',
     },
     red: {
@@ -28,6 +30,7 @@ export const THEME = extendTheme({
       900: '#90303D'
     },
     blue: {
+      100: '#0B98B7',
       500: '#3159A5',
     },
     background: '#EBEBEB',
