@@ -8,8 +8,6 @@ interface AudiobookListProps extends IBoxProps {
   legend: string;
 }
 
-
-
 export function AudiobookList({
   title,
   legend,
@@ -64,7 +62,10 @@ export function AudiobookList({
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        <HStack mt="10px">
+        <HStack 
+          mt="10px"
+          pr="15px"
+        >
           <CardAudioBook />
           <CardAudioBook />
           <CardAudioBook />
