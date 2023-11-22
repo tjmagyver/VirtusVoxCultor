@@ -19,6 +19,7 @@ import ReturnToStartIconImage from '@assets/returnToStartIcon.png';
 
 import { BuyPhysicalBookFooter } from "@components/BuyPhysicalBookFooter";
 import { CardChapterName } from "@components/CardChapterName";
+import { ReadMoreModal } from "@components/ReadMoreModal";
 
 export function Player() {
   return (
@@ -63,13 +64,11 @@ export function Player() {
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <Text
-                  fontSize="14px"
-                  fontFamily="inriaRegular"
-                  color="gray.300"
-                >
-                  ler mais ...
-                </Text>
+                <ReadMoreModal 
+                  position="absolute"
+                  top="114px"
+                  left="30px"
+                />
                 <Button
                   w="98px"
                   h="25px"
