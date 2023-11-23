@@ -6,8 +6,7 @@ import {
   Image,
   ScrollView,
   Text,
-  VStack,
-  WarningTwoIcon
+  VStack
 } from "native-base";
 
 import BookCoverLgImage from '@assets/bookCoverLg.png';
@@ -19,6 +18,7 @@ import ReturnToStartIconImage from '@assets/returnToStartIcon.png';
 
 import { BuyPhysicalBookFooter } from "@components/BuyPhysicalBookFooter";
 import { CardChapterName } from "@components/CardChapterName";
+import { ErrorReportModal } from "@components/ErrorReportModal";
 import { ReadMoreModal } from "@components/ReadMoreModal";
 
 export function Player() {
@@ -69,32 +69,10 @@ export function Player() {
                   top="114px"
                   left="30px"
                 />
-                <Button
-                  w="98px"
-                  h="25px"
-                  bg="gray.100"
-                  px={0}
-                  py={0}
-                  _pressed={{
-                    bg: "gray.100",
-                    opacity: 0.9,
-                  }}
-                  rounded="5px"
-                  leftIcon={
-                    <WarningTwoIcon
-                      size="14px"
-                      color="red.500"
-                    />
-                  }
-                >
-                  <Text
-                    fontSize="12px"
-                    fontFamily="inriaRegular"
-                    color="gray.300"
-                  >
-                    Reportar erro
-                  </Text>
-                </Button>
+                <ErrorReportModal 
+                  position="absolute"
+                  top="78px"
+                />
               </HStack>
             </VStack>
           </HStack>
