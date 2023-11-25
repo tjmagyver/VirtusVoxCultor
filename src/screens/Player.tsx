@@ -11,11 +11,11 @@ import {
 
 import BookCoverLgImage from '@assets/bookCoverLg.png';
 import EditIconImage from '@assets/editIcon.png';
-import EditIconLightImage from '@assets/editIconLight.png';
 import PolygonIconImage from '@assets/polygonIcon.png';
 import PolygonPlayIconImage from '@assets/polygonPlayIcon.png';
 import ReturnToStartIconImage from '@assets/returnToStartIcon.png';
 
+import { BookNotesModal } from "@components/BookNotesModal";
 import { BuyPhysicalBookFooter } from "@components/BuyPhysicalBookFooter";
 import { CardChapterName } from "@components/CardChapterName";
 import { ErrorReportModal } from "@components/ErrorReportModal";
@@ -141,36 +141,10 @@ export function Player() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Button
-                variant="unstyled"
-                px={0}
-                py={0}
-              >
-                <HStack
-                  alignItems="center"
-                  w="59px"
-                  h="21px"
-                  borderBottomWidth={1}
-                  borderBottomColor="gray.300"
-                >
-                  <Image
-                    source={EditIconLightImage}
-                    w="16px"
-                    h="16px"
-                    alt="Edit icon light"
-                    resizeMethod="resize"
-                    resizeMode="contain"
-                  />
-                  <Text
-                    fontSize="16px"
-                    fontFamily="inriaRegular"
-                    color="gray.300"
-                    ml="2px"
-                  >
-                    Notas
-                  </Text>
-                </HStack>
-              </Button>
+              <BookNotesModal 
+                position="absolute"
+                top="115px"
+              />
               <Button
                 variant="unstyled"
                 px={0}
