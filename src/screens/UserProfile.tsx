@@ -13,8 +13,19 @@ import MedalIconImage from '@assets/medalIcon.png';
 import PolygonIconGrayImage from '@assets/polygonIconGray.png';
 
 import { CardReaderProfileType } from "@components/CardReaderProfileType";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AppStackParamList } from "@routes/app.routes";
+import { useAuth } from "./../hooks/auth";
 
-export function UserProfile() {
+type UserProfileProps = NativeStackScreenProps<AppStackParamList, 'UserProfile'>
+
+export function UserProfile({ navigation }: UserProfileProps) {
+  const { user, signOut } = useAuth()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
   return (
     <VStack
       flex={1}
@@ -58,8 +69,8 @@ export function UserProfile() {
           alignItems="center"
           mt="7px"
         >
-          <ScrollView 
-            horizontal 
+          <ScrollView
+            horizontal
             showsHorizontalScrollIndicator={false}
           >
             <HStack ml="10px" mr="10px">
@@ -112,7 +123,7 @@ export function UserProfile() {
                 fontSize="20px"
                 color="gray.300"
               >
-                Usuário01
+                {user?.name}
               </Text>
               <Button
                 variant="link"
@@ -140,7 +151,7 @@ export function UserProfile() {
               fontSize="20px"
               color="gray.300"
             >
-              emailusuario@mail.com
+              {user?.email}
             </Text>
           </VStack>
           <VStack mt={5}>
@@ -156,7 +167,11 @@ export function UserProfile() {
               fontSize="20px"
               color="gray.300"
             >
-              03 de outubro de 2023
+              {new Date(user?.createdAt).toLocaleDateString('pt-BR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}
             </Text>
           </VStack>
           <HStack
@@ -211,20 +226,37 @@ export function UserProfile() {
             </Text>
           </Button>
         </VStack>
-        <Button
-          variant="link"
+        <HStack
           mt="35px"
           mb="40px"
-          ml="-260px"
+          alignItems="center"
+          justifyContent="space-around"
         >
-          <Text
-            fontFamily="inriaRegular"
-            fontSize="15px"
-            color="gray.900"
+          <Button
+            variant="link"
+            onPress={handleGoBack}
           >
-            {'< Voltar'}
-          </Text>
-        </Button>
+            <Text
+              fontFamily="inriaRegular"
+              fontSize="15px"
+              color="gray.900"
+            >
+              {'< Voltar'}
+            </Text>
+          </Button>
+          <Button
+            variant="link"
+            onPress={signOut}
+          >
+            <Text
+              fontFamily="inriaRegular"
+              fontSize="15px"
+              color="red.900"
+            >
+              {'Sair do aplicativo'}
+            </Text>
+          </Button>
+        </HStack>
       </ScrollView>
     </VStack>
   )

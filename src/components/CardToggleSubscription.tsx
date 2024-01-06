@@ -1,5 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
 import { Button, HStack, Switch, Text, VStack } from "native-base";
 import { useState } from "react";
+import { useAuth } from "./../hooks/auth";
 
 interface CardToggleSubscriptionProps {
   isSubscribed?: boolean;
@@ -9,6 +11,13 @@ export function CardToggleSubscription({
   isSubscribed = false
 }: CardToggleSubscriptionProps) {
   const [isAutoRenew, setIsAutoRenew] = useState(false);
+  const { user } = useAuth()
+  const navigation = useNavigation<any>()
+
+  function handleNavigateToPlans() {
+    navigation.navigate('Plans')
+  }
+
   return (
     <VStack
       bg="gray.950"
@@ -52,7 +61,7 @@ export function CardToggleSubscription({
             color="teal.300"
             fontSize="16px"
           >
-            {isSubscribed ? 'até 03/01/2024' : '03 de Outubro 2023'}
+            {isSubscribed ? 'até 03/01/2024' : user ? `${user?.createdAt}` : '03 de Outubro 2023'}
           </Text>
         </VStack>
       </HStack>
@@ -88,6 +97,7 @@ export function CardToggleSubscription({
             borderColor="teal.300"
             bg="transparent"
             mt={3}
+            onPress={handleNavigateToPlans}
           >
             <Text
               fontFamily="inriaRegular"

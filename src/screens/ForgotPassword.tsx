@@ -7,9 +7,9 @@ import IconApplication from '@assets/icon.png';
 
 import { Button } from '@components/Button';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from 'src/routes/StackRoute';
+import { AuthStackParamList } from '@routes/auth.routes';
 
-type ForgotPasswordProps = NativeStackScreenProps<RootStackParamList, 'ForgotPassword'>
+type ForgotPasswordProps = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>
 
 export function ForgotPassword({ navigation }: ForgotPasswordProps) {
   function handleGoBack() {

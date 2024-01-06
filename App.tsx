@@ -2,6 +2,7 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider, View } from 'native-base';
+import './ReactotronConfig';
 import { THEME } from './src/theme';
 
 import {
@@ -15,7 +16,9 @@ import { Kreon_400Regular } from '@expo-google-fonts/kreon';
 
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
-import { StackRoute } from './src/routes/StackRoute';
+import { AuthProvider } from './src/hooks/auth';
+import { Routes } from './src/routes/index';
+// import { AuthProvider } from 'src/hooks/auth';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -57,8 +60,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider theme={THEME}>
-        <View onLayout={onLayoutRootView} flex={1}>
-          <StackRoute />
+        <View
+          onLayout={onLayoutRootView}
+          flex={1}
+        >
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
         </View>
         <StatusBar
           style="dark"

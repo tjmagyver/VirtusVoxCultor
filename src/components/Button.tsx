@@ -1,10 +1,12 @@
 import { Button as ButtonNativeBase, IButtonProps } from 'native-base';
+import { ActivityIndicator } from 'react-native';
 
 interface ButtonProps extends IButtonProps {
   title: string;
   fontSize?: number;
   fontFamily?: string;
   rounded?: number;
+  isLoading?: boolean;
 }
 
 export function Button({
@@ -12,6 +14,7 @@ export function Button({
   fontSize = 25,
   fontFamily = "jostRegular",
   rounded = 10,
+  isLoading = false,
   ...rest
 }: ButtonProps) {
   return (
@@ -28,6 +31,6 @@ export function Button({
       bg="red.900"
       borderRadius={rounded}
       py={0}
-    >{title}</ButtonNativeBase>
+    >{isLoading ? <ActivityIndicator size="large" color="white" /> : title}</ButtonNativeBase>
   )
 }

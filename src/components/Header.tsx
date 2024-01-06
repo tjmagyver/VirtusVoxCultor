@@ -5,6 +5,8 @@ import OptionsIconImage from '@assets/optionsIcon.png';
 import ProfileIconImage from '@assets/profileIcon.png';
 import SearchIconImage from '@assets/searchIcon.png';
 import VirtusIconInactiveImage from '@assets/virtusIconInactive.png';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useAuth } from "./../hooks/auth";
 import { CardToggleSubscription } from "./CardToggleSubscription";
 
 export function Header() {
@@ -12,6 +14,21 @@ export function Header() {
     showModalCardToggleSubscription,
     setShowModalCardToggleSubscription
   ] = useState(false);
+  const navigation = useNavigation<any>()
+  const route = useRoute()
+  const { user } = useAuth()
+
+  function handleNavigateToUserOptions() {
+    if (route.name !== 'UserOptions') {
+      navigation.navigate('UserOptions')
+    }
+  }
+
+  function handleNavigateToUserProfile() {
+    if (route.name !== 'UserProfile') {
+      navigation.navigate('UserProfile')
+    }
+  }
 
   return (
     <HStack
@@ -54,13 +71,15 @@ export function Header() {
               fontFamily="inriaRegular"
               color="gray.300"
             >
-              Desativada
+              {
+                user.isSigned ? 'Ativa' : 'Desativada'
+              }
             </Text>
           </VStack>
         </HStack>
       </Button>
 
-      <Modal 
+      <Modal
         isOpen={showModalCardToggleSubscription}
         onClose={() => setShowModalCardToggleSubscription(false)}
       >
@@ -74,35 +93,42 @@ export function Header() {
         </Modal.Content>
       </Modal>
 
-      <HStack
-        alignItems="center"
+      <Button
+        variant="unstyled"
+        px={0}
+        py={0}
+        onPress={handleNavigateToUserProfile}
       >
-        <Image
-          source={ProfileIconImage}
-          alt="Ícone de perfil"
-          resizeMode="contain"
-          w="32px"
-          h="32px"
-          mr="6px"
-        />
+        <HStack
+          alignItems="center"
+        >
+          <Image
+            source={ProfileIconImage}
+            alt="Ícone de perfil"
+            resizeMode="contain"
+            w="32px"
+            h="32px"
+            mr="6px"
+          />
 
-        <VStack>
-          <Text
-            fontSize="12px"
-            fontFamily="inriaRegular"
-            color="white"
-          >
-            Perfil:
-          </Text>
-          <Text
-            fontSize="14px"
-            fontFamily="inriaRegular"
-            color="teal.300"
-          >
-            Leitor Assíduo
-          </Text>
-        </VStack>
-      </HStack>
+          <VStack>
+            <Text
+              fontSize="12px"
+              fontFamily="inriaRegular"
+              color="white"
+            >
+              Perfil:
+            </Text>
+            <Text
+              fontSize="14px"
+              fontFamily="inriaRegular"
+              color="teal.300"
+            >
+              Leitor Assíduo
+            </Text>
+          </VStack>
+        </HStack>
+      </Button>
 
       <HStack>
         <Image
@@ -113,15 +139,21 @@ export function Header() {
           h="30px"
           mr="15px"
         />
-
-        <Image
-          source={OptionsIconImage}
-          alt="Ícone de opções"
-          resizeMode="contain"
-          w="30px"
-          h="30px"
-        />
+        <Button
+          variant="unstyled"
+          px={0}
+          py={0}
+          onPress={handleNavigateToUserOptions}
+        >
+          <Image
+            source={OptionsIconImage}
+            alt="Ícone de opções"
+            resizeMode="contain"
+            w="30px"
+            h="30px"
+          />
+        </Button>
       </HStack>
-    </HStack>
+    </HStack >
   )
 }

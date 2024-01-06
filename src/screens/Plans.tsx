@@ -6,9 +6,9 @@ import PaymentsMethodsImage from '@assets/paymentsMethods.png';
 import { Button } from "@components/Button";
 import { CardPlans } from "@components/CardPlans";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "src/routes/StackRoute";
+import { AuthStackParamList } from "@routes/auth.routes";
 
-type PlansProps = NativeStackScreenProps<RootStackParamList, 'Plans'>
+type PlansProps = NativeStackScreenProps<AuthStackParamList, 'Plans'>
 
 export function Plans({ navigation }: PlansProps) {
   function handleGoBack() {
@@ -83,6 +83,7 @@ export function Plans({ navigation }: PlansProps) {
             mt={6}
             h={38}
             fontSize={18}
+            onPress={handleGoBack}
           />
 
           <Box w="100%" alignItems="flex-start" mt={5}>

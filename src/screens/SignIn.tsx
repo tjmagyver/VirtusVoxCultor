@@ -16,14 +16,54 @@ import IconApplication from '@assets/icon.png';
 
 import { Button } from '@components/Button';
 import { SignInSocialButton } from '@components/SignInSocialButton';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from 'src/routes/StackRoute';
+import { AuthStackParamList } from '@routes/auth.routes';
+import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { Alert } from 'react-native';
+import reactotron from 'reactotron-react-native';
+import { z } from 'zod';
+import { useAuth } from './../hooks/auth';
 
-type SignInProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>
+type SignInProps = NativeStackScreenProps<AuthStackParamList, 'SignIn'>
+
+const authenticateBodySchema = z.object({
+  email: z.string().email().min(1),
+  password: z.string().min(1)
+})
+
+type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>
 
 export function SignIn({ navigation }: SignInProps) {
+  const [isLoading, setIsLoading] = useState(false)
+  const { register, setValue, setError, handleSubmit, control, reset, formState: { errors } } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: zodResolver(authenticateBodySchema)
+  });
+  const { signInWithEmailAndPassword } = useAuth()
+
   function handleNavigateSignUp() {
     navigation.navigate('SignUp')
+  }
+
+  async function handleSignIn({ email, password }: AuthenticateBodySchema) {
+    reactotron.log(email, password)
+    setIsLoading(true)
+    reactotron.log('saiu')
+    try {
+      await signInWithEmailAndPassword(email, password)
+      Alert.alert("Acessar conta", "acesso liberado!")
+      setIsLoading(false)
+    } catch (error: any) {
+      reactotron.log(error.message)
+      reactotron.log(error)
+      Alert.alert("Falha no login", error.message)
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -79,7 +119,27 @@ export function SignIn({ navigation }: SignInProps) {
               textAlign="center"
               lineHeight="40px"
             >Login ou e-mail</Text>
-            <Input />
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input
+                  placeholder="Email:"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
+              name="email"
+            />
+            {errors.email &&
+              <Text
+                fontFamily="inriaRegular"
+                color="red.500"
+              >Campo obrigatório.</Text>
+            }
           </Box>
           <Box w="80%">
             <Text
@@ -89,7 +149,28 @@ export function SignIn({ navigation }: SignInProps) {
               textAlign="center"
               lineHeight="40px"
             >Senha</Text>
-            <Input type="password" />
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input
+                  placeholder="Senha:"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  type="password"
+                />
+              )}
+              name="password"
+            />
+            {errors.password &&
+              <Text
+                fontFamily="inriaRegular"
+                color="red.500"
+              >Campo obrigatório.</Text>
+            }
             <Text
               fontFamily="inriaRegular"
               color="#00F0FF"
@@ -114,10 +195,12 @@ export function SignIn({ navigation }: SignInProps) {
             </Box>
           </Box>
           <Button
+            isLoading={isLoading}
             title="Entrar"
             w="80%"
             h="40px"
             mt={6}
+            onPress={handleSubmit(handleSignIn)}
           />
           <ButtonNativeBase
             variant="link"

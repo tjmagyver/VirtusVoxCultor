@@ -4,11 +4,21 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@dtos/*": ["src/dtos/*"],
-      "@components/*": ["src/components/*"],
-      "@screens/*": ["src/screens/*"],
-      "@assets/*": ["src/assets/*"],
-      "@routes/*": ["src/routes/*"],
+      "@dtos/*": [
+        "src/dtos/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@routes/*": [
+        "src/routes/*"
+      ],
     }
   }
 }

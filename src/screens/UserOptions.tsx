@@ -1,5 +1,6 @@
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
+import { useNavigation } from "@react-navigation/native";
 import {
   Button as ButtonNativeBase, CheckIcon,
   CloseIcon,
@@ -17,9 +18,14 @@ export function UserOptions() {
   const [toggleFootnoteSound, setToggleFootnoteSound] = useState('Desativado');
   const [isTypingSupport, setIsTypingSupport] = useState(false);
   const [supportText, setSupportText] = useState('');
+  const navigation = useNavigation<any>()
 
   function handleToggleSupportButtonClick() {
     setIsTypingSupport(!isTypingSupport);
+  }
+
+  function handleGoBack() {
+    navigation.goBack()
   }
 
   return (
@@ -96,7 +102,7 @@ export function UserOptions() {
                 ml="5px"
               >
                 Desligar a tela aos {' '}
-                <Input 
+                <Input
                   bg="white"
                   color="gray.900"
                   fontSize="16px"
@@ -199,7 +205,7 @@ export function UserOptions() {
                 mt="8px"
                 alignItems="flex-end"
               >
-                <IconButton 
+                <IconButton
                   icon={
                     <CloseIcon color="white" size="12px" />
                   }
@@ -215,7 +221,7 @@ export function UserOptions() {
                     opacity: 0.9
                   }}
                 />
-                <TextArea 
+                <TextArea
                   autoCompleteType={'off'}
                   shadow={4}
                   w="298px"
@@ -254,6 +260,7 @@ export function UserOptions() {
             mt="40px"
             mb="40px"
             ml="-260px"
+            onPress={handleGoBack}
           >
             <Text
               fontFamily="inriaRegular"

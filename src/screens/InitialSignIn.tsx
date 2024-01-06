@@ -5,9 +5,9 @@ import { Button } from "@components/Button";
 import BackgroundImage from "@assets/background.png";
 import IconApplication from '@assets/icon.png';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "src/routes/StackRoute";
+import { AuthStackParamList } from "@routes/auth.routes";
 
-type InitialSignInProps = NativeStackScreenProps<RootStackParamList, 'InitialSignIn'>
+type InitialSignInProps = NativeStackScreenProps<AuthStackParamList, 'InitialSignIn'>
 
 export function InitialSignIn({ navigation }: InitialSignInProps) {
   function handleNavigateSignIn() {
