@@ -9,7 +9,6 @@ export type AuthStackParamList = {
   SignIn: undefined
   SignUp: undefined
   ForgotPassword: undefined
-  Plans: undefined
 }
 
 const { Navigator, Screen } = createNativeStackNavigator<AuthStackParamList>()

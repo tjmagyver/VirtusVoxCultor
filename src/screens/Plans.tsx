@@ -6,17 +6,22 @@ import PaymentsMethodsImage from '@assets/paymentsMethods.png';
 import { Button } from "@components/Button";
 import { CardPlans } from "@components/CardPlans";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AuthStackParamList } from "@routes/auth.routes";
+import { AppStackParamList } from "@routes/app.routes";
 
-type PlansProps = NativeStackScreenProps<AuthStackParamList, 'Plans'>
+type PlansProps = NativeStackScreenProps<AppStackParamList, 'Plans'>
 
-export function Plans({ navigation }: PlansProps) {
+export function Plans({ navigation }: PlansProps | any) {
   function handleGoBack() {
     navigation.goBack();
   }
 
+  function handleNavigateCheckout(productId: string) {
+    navigation.navigate('Checkout', { productId });
+    // Linking.openURL(productId)
+    //   .catch((err) => console.error('Erro ao abrir o link:', err));
+  }
+
   return (
-    // i want remove scroll bar indicador
     <ScrollView
       showsVerticalScrollIndicator={false}
     >
@@ -55,12 +60,14 @@ export function Plans({ navigation }: PlansProps) {
             mt="27px"
             title="Mensal"
             price="149,90"
+            onNavigateCheckout={() => handleNavigateCheckout('price_1OW9tdAzxlqmDZEbvJwG9BfY')}
           />
 
           <CardPlans
             title="Trimestral"
             price="129,90"
             mt="18px"
+            onNavigateCheckout={() => handleNavigateCheckout('price_1OW9uxAzxlqmDZEbK4qneUD7')}
           />
 
           <CardPlans
@@ -68,6 +75,7 @@ export function Plans({ navigation }: PlansProps) {
             price="99,90"
             mt="18px"
             isBestOffer
+            onNavigateCheckout={() => handleNavigateCheckout('price_1OW9xKAzxlqmDZEb9psk2t5c')}
           />
 
           <Image

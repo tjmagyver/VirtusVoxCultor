@@ -56,7 +56,6 @@ export function SignIn({ navigation }: SignInProps) {
     reactotron.log('saiu')
     try {
       await signInWithEmailAndPassword(email, password)
-      Alert.alert("Acessar conta", "acesso liberado!")
       setIsLoading(false)
     } catch (error: any) {
       reactotron.log(error.message)
@@ -88,12 +87,14 @@ export function SignIn({ navigation }: SignInProps) {
 
         <VStack mt={'60px'}>
           <SignInSocialButton
+            opacity={0.4}
             bg="white"
             textColor='gray.900'
             title="Entre com Google"
             icon={<Icon as={GoogleSvg} name="Google Svg" size="sm" />}
           />
           <SignInSocialButton
+            opacity={0.4}
             mt="15px"
             bg="black"
             borderColor="white"
@@ -103,6 +104,7 @@ export function SignIn({ navigation }: SignInProps) {
             icon={<Icon as={AppleSvg} name="Apple Svg" size="sm" />}
           />
           <SignInSocialButton
+            opacity={0.4}
             mt="15px"
             bg="blue.500"
             textColor='white'

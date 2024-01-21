@@ -1,6 +1,7 @@
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AppStackParamList } from "@routes/app.routes";
 import {
   Button as ButtonNativeBase, CheckIcon,
   CloseIcon,
@@ -14,11 +15,12 @@ import {
 } from "native-base";
 import { useState } from "react";
 
-export function UserOptions() {
+type UserOptionsProps = NativeStackScreenProps<AppStackParamList, 'UserOptions'>
+
+export function UserOptions({ navigation }: UserOptionsProps) {
   const [toggleFootnoteSound, setToggleFootnoteSound] = useState('Desativado');
   const [isTypingSupport, setIsTypingSupport] = useState(false);
   const [supportText, setSupportText] = useState('');
-  const navigation = useNavigation<any>()
 
   function handleToggleSupportButtonClick() {
     setIsTypingSupport(!isTypingSupport);

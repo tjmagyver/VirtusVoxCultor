@@ -15,10 +15,10 @@ import { Jost_400Regular } from '@expo-google-fonts/jost';
 import { Kreon_400Regular } from '@expo-google-fonts/kreon';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { StripeProvider } from '@stripe/stripe-react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AuthProvider } from './src/hooks/auth';
 import { Routes } from './src/routes/index';
-// import { AuthProvider } from 'src/hooks/auth';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -58,22 +58,24 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <NativeBaseProvider theme={THEME}>
-        <View
-          onLayout={onLayoutRootView}
-          flex={1}
-        >
-          <AuthProvider>
-            <Routes />
-          </AuthProvider>
-        </View>
-        <StatusBar
-          style="dark"
-          translucent
-          backgroundColor='transparent'
-        />
-      </NativeBaseProvider>
-    </NavigationContainer>
+    <StripeProvider publishableKey={`${process.env.STRIPE_PUBLIC_KEY}`}>
+      <NavigationContainer>
+        <NativeBaseProvider theme={THEME}>
+          <View
+            onLayout={onLayoutRootView}
+            flex={1}
+          >
+            <AuthProvider>
+              <Routes />
+            </AuthProvider>
+          </View>
+          <StatusBar
+            style="dark"
+            translucent
+            backgroundColor='transparent'
+          />
+        </NativeBaseProvider>
+      </NavigationContainer>
+    </StripeProvider>
   );
 }

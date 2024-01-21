@@ -26,6 +26,7 @@ interface User {
   email: string;
   username: string;
   isSigned: boolean;
+  token: string;
   createdAt: Date,
   updatedAt: Date,
 }
@@ -44,8 +45,6 @@ const AuthContext = createContext({} as IAuthContextData)
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User)
   const [userStorageLoading, setUserStorageLoading] = useState(true)
-
-  const userStorageKey = '@virtus:token'
 
   // async function signInWithGoogle() {
   //   try {
@@ -149,12 +148,13 @@ function AuthProvider({ children }: AuthProviderProps) {
           name: data.name,
           username: data.username,
           isSigned: data.isSigned,
+          token: token,
           createdAt: new Date(data.createdAt),
           updatedAt: new Date(data.updatedAt)
         }
         reactotron.log(userLogged)
         setUser(userLogged);
-        await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
+        await AsyncStorage.setItem(`${process.env.ASYNC_STORAGE_KEY}`, JSON.stringify(userLogged));
       } catch (error) {
         throw new Error("Erro na autenticação por e-mail e senha");
       }
@@ -166,12 +166,12 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function signOut() {
     setUser({} as User)
-    await AsyncStorage.removeItem(userStorageKey)
+    await AsyncStorage.removeItem(`${process.env.ASYNC_STORAGE_KEY}`)
   }
 
   useEffect(() => {
     async function loadUserStorageData() {
-      const userStoraged = await AsyncStorage.getItem(userStorageKey)
+      const userStoraged = await AsyncStorage.getItem(`${process.env.ASYNC_STORAGE_KEY}`)
 
       if (userStoraged) {
         const userLogged = JSON.parse(userStoraged) as User
@@ -182,7 +182,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
 
     loadUserStorageData()
-  }, [])
+  }, [user])
 
   return (
     <AuthContext.Provider value={{

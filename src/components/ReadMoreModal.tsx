@@ -7,7 +7,11 @@ import {
 } from "native-base";
 import { useState } from "react";
 
-export function ReadMoreModal({ ...rest }: IBoxProps) {
+interface ReadMoreModalProps extends IBoxProps {
+  sinopse: string
+}
+
+export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
   const [showModalReadMore, setShowModalReadMore] = useState(false);
 
   return (
@@ -51,7 +55,8 @@ export function ReadMoreModal({ ...rest }: IBoxProps) {
               letterSpacing="0.6px"
               lineHeight="15px"
             >
-              Em Dominus Vobiscum, São Pedro Damião reflete sobre a natureza e a
+              {sinopse}
+              {/* Em Dominus Vobiscum, São Pedro Damião reflete sobre a natureza e a
               forma da liturgia da missa, quando rezada pelo sacerdote
               privadamente, sem presença do povo. Um assunto pouco explorado e
               pouco compreendido, mas de suma importância quando entendemos que
@@ -59,14 +64,15 @@ export function ReadMoreModal({ ...rest }: IBoxProps) {
               privadas também fazem parte deste Corpo. Essa perspectiva pode
               revolucionar a forma como os sacerdotes celebram e como os fiéis
               participam da ação litúrgica e, também, como fazem suas
-              orações diárias. {'\n'} {'\n'}
+              orações diárias.  */}
+              {'\n'} {'\n'}
 
               Para esta edição, além do texto original e integral, trazemos
               também contribuições do Papa Bento XVI, e artigos do Ir. Vanderlei
               de Lima e do Pe. Bruno Roberto Rossi, que complementam a visão de
               São Pedro Damião com considerações atuais sobre a Santa Missa.
             </Text>
-            <HStack 
+            <HStack
               ml="22px"
               mt="12px"
               mb="16px"
@@ -77,7 +83,7 @@ export function ReadMoreModal({ ...rest }: IBoxProps) {
                 color="gray.350"
               >
                 Tempo total estimado: {' '}
-                <Input 
+                <Input
                   bg="white"
                   color="gray.900"
                   fontSize="15px"

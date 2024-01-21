@@ -8,12 +8,14 @@ interface CardPlansProps extends IBoxProps {
   price: string
   title: string
   isBestOffer?: boolean
+  onNavigateCheckout: () => void
 }
 
 export function CardPlans({
   price,
   title,
   isBestOffer = false,
+  onNavigateCheckout,
   ...rest
 }: CardPlansProps) {
   return (
@@ -89,6 +91,7 @@ export function CardPlans({
             rounded={5}
             fontSize={12}
             fontFamily="inriaBold"
+            onPress={onNavigateCheckout}
           />
         </Box>
       </Box>

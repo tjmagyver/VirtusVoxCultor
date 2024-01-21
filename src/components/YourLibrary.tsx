@@ -10,11 +10,15 @@ import {
 
 import PolygonIconImage from '@assets/polygonIcon.png';
 import { CardAudioBook } from "@components/CardAudiobook";
+import { AudiobookData } from "@screens/Home";
 import { useState } from "react";
 import { FilterBooksModal } from "./FilterBooksModal";
 
+interface YourLibraryProps {
+  audiobooks: AudiobookData[]
+}
 
-export function YourLibrary() {
+export function YourLibrary({ audiobooks }: YourLibraryProps) {
   const [isExpandedLibrary, setIsExpandedLibrary] = useState(false);
   const [isTypingSearch, setIsTypingSearch] = useState(false);
 
@@ -25,6 +29,31 @@ export function YourLibrary() {
   function handleToggleSearchIconButton() {
     setIsTypingSearch(!isTypingSearch);
   }
+
+  console.log(audiobooks)
+
+  function renderAudioBookRows(audiobooks: any) {
+    const rows = [];
+    const audiobooksLength = audiobooks.length;
+
+    for (let i = 0; i < audiobooksLength; i += 3) {
+      const audioBookRow = (
+        <HStack key={i} mb="12px">
+          {audiobooks.slice(i, i + 3).map((audiobook: any, index: any, array: any) => (
+            <CardAudioBook
+              key={index}
+              audiobook={audiobook}
+              mr={index !== array.length - 1 ? '4px' : '0'}
+            />
+          ))}
+        </HStack>
+      );
+
+      rows.push(audioBookRow);
+    }
+
+    return rows;
+  };
 
   return (
     <VStack
@@ -91,7 +120,7 @@ export function YourLibrary() {
                   }}
                   onPress={handleToggleSearchIconButton}
                 />
-                <FilterBooksModal 
+                <FilterBooksModal
                   position="absolute"
                   top={111}
                   right="5px"
@@ -115,7 +144,7 @@ export function YourLibrary() {
             </Button>
         }
       </HStack>
-      { isExpandedLibrary &&
+      {isExpandedLibrary &&
         isTypingSearch &&
         <Input
           rounded="30px"
@@ -154,40 +183,17 @@ export function YourLibrary() {
         {
           isExpandedLibrary ?
             <VStack mt="10px">
-              <HStack>
-                <CardAudioBook mr="4px" />
-                <CardAudioBook mr="4px" />
-                <CardAudioBook />
-              </HStack>
-              <HStack mt="19px">
-                <CardAudioBook mr="4px" />
-                <CardAudioBook mr="4px" />
-                <CardAudioBook />
-              </HStack>
-              <HStack mt="19px">
-                <CardAudioBook mr="4px" />
-                <CardAudioBook mr="4px" />
-                <CardAudioBook />
-              </HStack>
-              <HStack mt="19px">
-                <CardAudioBook mr="4px" />
-                <CardAudioBook mr="4px" />
-                <CardAudioBook />
-              </HStack>
-              <HStack mt="19px">
-                <CardAudioBook mr="4px" />
-                <CardAudioBook mr="4px" />
-                <CardAudioBook />
-              </HStack>
+              {
+                renderAudioBookRows(audiobooks)
+              }
             </VStack> :
             <HStack
               mt="10px"
               pr="20px"
             >
-              <CardAudioBook />
-              <CardAudioBook />
-              <CardAudioBook />
-              <CardAudioBook />
+              {
+                renderAudioBookRows(audiobooks)
+              }
             </HStack>
         }
       </ScrollView>

@@ -1,18 +1,23 @@
 import { HStack, IBoxProps, ScrollView, Text, VStack } from "native-base";
 
 
-import { CardAudioBook } from "@components/CardAudiobook";
+import { AudiobookData } from "@screens/Home";
+import reactotron from "reactotron-react-native";
+import { CardAudioBook } from "./CardAudiobook";
 
 interface AudiobookListProps extends IBoxProps {
+  audiobooks: AudiobookData[]
   title: string;
   legend: string;
 }
 
 export function AudiobookList({
+  audiobooks,
   title,
   legend,
   ...rest
 }: AudiobookListProps) {
+  reactotron.log(audiobooks)
   return (
     <VStack
       w="100%"
@@ -34,7 +39,7 @@ export function AudiobookList({
           {title}
         </Text>
 
-        <HStack 
+        <HStack
           alignItems="center"
           w="100%"
         >
@@ -62,10 +67,16 @@ export function AudiobookList({
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        <HStack 
+        <HStack
           mt="10px"
           pr="15px"
         >
+          {/* {
+            audiobooks &&
+            audiobooks.map((audiobook: any) => {
+              <CardAudioBook audiobook={audiobook} />
+            })
+          } */}
           <CardAudioBook />
           <CardAudioBook />
           <CardAudioBook />

@@ -89,7 +89,7 @@ export function Header() {
           bg="gray.900"
           w="366px"
         >
-          <CardToggleSubscription />
+          <CardToggleSubscription onCloseModal={() => setShowModalCardToggleSubscription(false)} />
         </Modal.Content>
       </Modal>
 

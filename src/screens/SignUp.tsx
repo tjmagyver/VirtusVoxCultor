@@ -34,7 +34,7 @@ const createAccountBodySchema = z.object({
 
 type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>
 
-export function SignUp({ navigation }: SignUpProps) {
+export function SignUp({ navigation }: SignUpProps | any) {
   const [isLoading, setIsLoading] = useState(false)
   const { register, setValue, setError, handleSubmit, control, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -46,6 +46,10 @@ export function SignUp({ navigation }: SignUpProps) {
     },
     resolver: zodResolver(createAccountBodySchema)
   });
+
+  function handleNavigateLogin() {
+    navigation.navigate('SignIn')
+  }
 
   const handleSignUp = async (data: CreateAccountBodySchema) => {
     if (data.password !== data.passwordConfirm) {
@@ -64,7 +68,7 @@ export function SignUp({ navigation }: SignUpProps) {
     try {
       await api.post('/accounts', formData)
       setIsLoading(false)
-      Alert.alert("Criar conta", "Conta criado com sucesso!")
+      handleNavigateLogin()
     } catch (error) {
       Reactotron.log(error);
       setIsLoading(false)

@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { Checkout } from "@screens/Checkout"
 import { Home } from "@screens/Home"
 import { Plans } from "@screens/Plans"
 import { Player } from "@screens/Player"
@@ -11,6 +12,7 @@ export type AppStackParamList = {
   UserOptions: undefined
   UserProfile: undefined
   Plans: undefined
+  Checkout: undefined
 }
 
 const { Navigator, Screen } = createNativeStackNavigator<AppStackParamList>()
@@ -25,6 +27,7 @@ export function AppRoutes() {
       <Screen name="UserOptions" component={UserOptions} />
       <Screen name="UserProfile" component={UserProfile} />
       <Screen name="Plans" component={Plans} />
+      <Screen name="Checkout" component={Checkout} />
     </Navigator>
   )
 }

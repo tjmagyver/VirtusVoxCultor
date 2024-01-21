@@ -192,7 +192,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
                 color="blue.100"
                 fontSize="16px"
               >
-                Ativa
+                {user?.isSigned ? 'Ativa' : 'Desativada'}
               </Text>
             </VStack>
 
