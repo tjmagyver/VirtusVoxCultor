@@ -12,6 +12,7 @@ import PolygonIconImage from '@assets/polygonIcon.png';
 import { CardAudioBook } from "@components/CardAudiobook";
 import { AudiobookData } from "@screens/Home";
 import { useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 import { FilterBooksModal } from "./FilterBooksModal";
 
 interface YourLibraryProps {
@@ -21,6 +22,7 @@ interface YourLibraryProps {
 export function YourLibrary({ audiobooks }: YourLibraryProps) {
   const [isExpandedLibrary, setIsExpandedLibrary] = useState(false);
   const [isTypingSearch, setIsTypingSearch] = useState(false);
+  const [searchTitle, setSearchTitle] = useState('')
 
   function handleToggleExpandLibrary() {
     setIsExpandedLibrary(!isExpandedLibrary);
@@ -29,8 +31,6 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
   function handleToggleSearchIconButton() {
     setIsTypingSearch(!isTypingSearch);
   }
-
-  console.log(audiobooks)
 
   function renderAudioBookRows(audiobooks: any) {
     const rows = [];
@@ -148,8 +148,9 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
         isTypingSearch &&
         <Input
           rounded="30px"
-          width="340px"
-          h={8}
+          minWidth="340px"
+          w="90%"
+          h={RFValue(8)}
           ml="12px"
           mt="18px"
           bg="gray.125"
@@ -162,6 +163,8 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
             bg: "gray.125",
             fontFamily: 'inriaRegular',
           }}
+          value={searchTitle}
+          onChangeText={setSearchTitle}
           InputRightElement={
             <IconButton
               icon={
@@ -184,7 +187,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
           isExpandedLibrary ?
             <VStack mt="10px">
               {
-                renderAudioBookRows(audiobooks)
+                renderAudioBookRows(audiobooks?.filter(audiobook => audiobook?.title?.toLocaleLowerCase().includes(searchTitle?.toLocaleLowerCase())))
               }
             </VStack> :
             <HStack
@@ -192,7 +195,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
               pr="20px"
             >
               {
-                renderAudioBookRows(audiobooks)
+                renderAudioBookRows(audiobooks?.filter(audiobook => audiobook?.title?.toLocaleLowerCase().includes(searchTitle?.toLocaleLowerCase())))
               }
             </HStack>
         }

@@ -61,8 +61,8 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
     <VStack
       bg="gray.950"
       rounded="10px"
-      px="44px"
-      h="160px"
+      px="24px"
+      h="fit-content"
       py="26px"
       justifyContent="space-between"
     >
@@ -148,7 +148,8 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
           <Button
             variant="unstyled"
             rounded="30px"
-            w="283px"
+            minW="283px"
+            w="100%"
             h="56px"
             py={0}
             borderWidth={1}
@@ -163,13 +164,11 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
               fontSize="14px"
               textAlign="center"
             >
-              Conheça nossos planos, e
+              Conheça nossos planos, e 
               <Text
                 color="teal.300"
               >
-                {' ative seu '}
-                {'\n'}
-                {'acesso '}
+                {' ative seu acesso '}
               </Text>
               aos audiobooks.
             </Text>

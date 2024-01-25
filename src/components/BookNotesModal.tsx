@@ -10,8 +10,8 @@ import {
 import { useState } from "react";
 
 import EditIconLightImage from '@assets/editIconLight.png';
+import { RFValue } from "react-native-responsive-fontsize";
 import { PageNoteDetails } from "./PageNoteDetails";
-
 const notes: { note: string, noteNumber: string }[] = [
   {
     noteNumber: "8",
@@ -49,7 +49,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
         <HStack
           alignItems="center"
           w="59px"
-          h="21px"
+          h={RFValue(21)}
           borderBottomWidth={1}
           borderBottomColor="gray.300"
         >
@@ -77,8 +77,8 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
       >
         <Modal.Content
           {...rest}
-          w="366px"
-          h="437px"
+          w={RFValue(366)}
+          h={RFValue(437)}
           rounded="10px"
           bg="white"
         >
@@ -98,7 +98,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
               <HStack
                 alignItems="center"
                 w="59px"
-                h="21px"
+                h={RFValue(21)}
                 borderBottomWidth={1}
                 borderBottomColor="gray.300"
               >
@@ -124,8 +124,8 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   variant="unstyled"
                   px={0}
                   py={0}
-                  w="77px"
-                  h="23px"
+                  w={RFValue(77)}
+                  h={RFValue(28)}
                   borderWidth={originalsNotesSelected ? 2 : 0}
                   borderColor="gray.100"
                   borderRadius="5px"
@@ -136,7 +136,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   <Text
                     color="gray.300"
                     fontFamily="inriaRegular"
-                    fontSize="16px"
+                    fontSize={RFValue(16)}
                     mt={originalsNotesSelected ? "-2px" : "0px"}
                   >
                     Originais
@@ -146,8 +146,8 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   variant="unstyled"
                   px={0}
                   py={0}
-                  w="77px"
-                  h="23px"
+                  w={RFValue(77)}
+                  h={RFValue(23)}
                   borderWidth={personalsNotesSelected ? 2 : 0}
                   borderColor="gray.100"
                   borderRadius="5px"
@@ -158,7 +158,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   <Text
                     color="gray.300"
                     fontFamily="inriaRegular"
-                    fontSize="16px"
+                    fontSize={RFValue(16)}
                     mt={personalsNotesSelected ? "-2px" : "0px"}
                   >
                     Próprias
@@ -225,7 +225,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
               onPress={() => setShowModalBookNotes(false)}
             >
               <Text
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 fontFamily="inriaRegular"
                 color="gray.900"
               >

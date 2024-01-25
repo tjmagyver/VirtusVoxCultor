@@ -1,11 +1,18 @@
-import { HStack, Image, Text, VStack } from "native-base";
+import { Button, HStack, Image, Text, VStack } from "native-base";
 
 import BuyBookImage from '@assets/buyBook.png';
+import { Linking } from "react-native";
 
-export function BuyPhysicalBookFooter() {
+interface BuyPhysicalBookFooterProps {
+  linkPurchase: string
+}
+
+export function BuyPhysicalBookFooter({
+  linkPurchase
+}: BuyPhysicalBookFooterProps) {
   return (
-    <HStack 
-      w="366px"
+    <HStack
+      w="fit-content"
       h="98px"
       rounded="22px"
       bg="gray.100"
@@ -13,25 +20,27 @@ export function BuyPhysicalBookFooter() {
       alignItems="center"
       px="15px"
     >
-      <Image 
+      <Image
         source={BuyBookImage}
         alt="Buy Book"
         resizeMode="contain"
         resizeMethod="resize"
       />
-      <VStack 
-        h="40px"
+      <VStack
+        h="50px"
         justifyContent="center"
         ml="15px"
       >
-        <Text
-          fontFamily="inriaRegular"
-          fontSize="25px"
-          color="red.900"
-          mt="10px"
-        >
-          COMPRAR O LIVRO FÍSICO
-        </Text>
+        <Button variant="unstyled" px={0} py={0} onPress={() => Linking.openURL(linkPurchase)}>
+          <Text
+            fontFamily="inriaRegular"
+            fontSize="23px"
+            color="red.900"
+            mt="10px"
+          >
+            COMPRAR O LIVRO FÍSICO
+          </Text>
+        </Button>
         <Text
           fontFamily="inriaRegular"
           fontSize="15px"

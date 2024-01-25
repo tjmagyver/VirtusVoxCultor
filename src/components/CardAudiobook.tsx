@@ -8,7 +8,6 @@ interface CardAudioBookProps extends IButtonProps {
   audiobook?: AudiobookData
 }
 
-import BookCoverImage from '@assets/bookCover.png';
 
 export function CardAudioBook({ audiobook, ...rest }: CardAudioBookProps) {
   const navigation = useNavigation<any>()
@@ -29,7 +28,7 @@ export function CardAudioBook({ audiobook, ...rest }: CardAudioBookProps) {
             position="relative"
           >
             <ButtonNativeBase w="100%" h="100%" onPress={handleNavigatePlayer} {...rest} variant="link" position="absolute" top={0} zIndex={100} />
-            <Image w="100%" h="100%" source={BookCoverImage} alt="Cover audiobook" resizeMode="contain" position="absolute" top={0} zIndex={0} rounded="4px" />
+            <Image w="100%" h="100%" source={{ uri: audiobook?.cover }} alt="Cover audiobook" resizeMode="contain" position="absolute" top={0} zIndex={0} rounded="4px" />
           </Box> :
           <ButtonNativeBase
             onPress={handleNavigatePlayer}
@@ -40,10 +39,7 @@ export function CardAudioBook({ audiobook, ...rest }: CardAudioBookProps) {
             opacity={0.2}
             ml="10px"
           />
-
       }
-
-
     </>
   )
 }

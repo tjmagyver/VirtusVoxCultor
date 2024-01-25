@@ -6,6 +6,7 @@ import {
   VStack
 } from "native-base";
 import { useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface ReadMoreModalProps extends IBoxProps {
   sinopse: string
@@ -23,7 +24,7 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
         onPress={() => setShowModalReadMore(true)}
       >
         <Text
-          fontSize="14px"
+          fontSize={RFValue(14)}
           fontFamily="inriaRegular"
           color="gray.300"
         >
@@ -36,7 +37,7 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
       >
         <Modal.Content
           {...rest}
-          w="332px"
+          w={RFValue(332)}
           h="fit-content"
           rounded="10px"
           bg="gray.100"
@@ -48,12 +49,12 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
             justifyContent="space-between"
           >
             <Text
-              w="288px"
+              w={RFValue(288)}
               color="black"
               fontFamily="inriaRegular"
-              fontSize="12px"
-              letterSpacing="0.6px"
-              lineHeight="15px"
+              fontSize={RFValue(12)}
+              letterSpacing={RFValue(0.06)}
+              lineHeight={RFValue(15)}
             >
               {sinopse}
               {/* Em Dominus Vobiscum, São Pedro Damião reflete sobre a natureza e a

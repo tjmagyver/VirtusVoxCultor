@@ -24,7 +24,7 @@ export function Home() {
   async function getAudiobooks() {
     try {
       const audiobooks = await api.get('audiobooks')
-      setAudiobooks(audiobooks.data)
+      setAudiobooks(audiobooks.data.filter((audiobook: any) => audiobook.isVisible !== false))
     } catch (error) {
       reactotron.log(error)
     }

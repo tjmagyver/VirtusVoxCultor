@@ -1,4 +1,5 @@
 import { Box, Text } from "native-base";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface CardChapterNameProps {
   chapterName: string;
@@ -12,8 +13,8 @@ export function CardChapterName({
   return (
     <Box
       justifyContent="center"
-      w="271px"
-      h="42px"
+      w={RFValue(271)}
+      h={RFValue(42)}
       rounded="10px"
       mb="6px"
       px="19px"
@@ -23,8 +24,10 @@ export function CardChapterName({
     >
       <Text
         fontFamily="inriaRegular"
-        fontSize="12px"
+        fontSize={RFValue(12)}
         color={isCurrentChapter ? "gray.900" : "gray.300"}
+        noOfLines={1}
+        ellipsizeMode="tail"
       >
         {chapterName}
       </Text>

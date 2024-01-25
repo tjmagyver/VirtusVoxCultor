@@ -36,3 +36,9 @@ yarn-error.*
 
 #env
 .env
+
+#eas build
+.eas.json
+```
+#app json
+app.json

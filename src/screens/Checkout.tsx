@@ -60,9 +60,10 @@ export function Checkout({ navigation }: CheckoutProps) {
 
       const userUpdatedWithSubscription = await api.patch(`/accounts/${user?.id}`)
 
+      navigation.navigate('Home')
+      
       await AsyncStorage.setItem(`${process.env.ASYNC_STORAGE_KEY}`, JSON.stringify(userUpdatedWithSubscription));
 
-      navigation.navigate('Home')
     } catch (error) {
       console.log(error)
       Alert.alert('Erro:', 'Aconteceu um erro ao buscar os parâmetros do pagamento.');

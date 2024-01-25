@@ -1,4 +1,3 @@
-import BookCoverLgImage from '@assets/bookCoverLg.png';
 import EditIconImage from '@assets/editIcon.png';
 import PolygonIconImage from '@assets/polygonIcon.png';
 import PolygonPlayIconImage from '@assets/polygonPlayIcon.png';
@@ -10,6 +9,7 @@ import {
   Button,
   HStack,
   Image,
+  Pressable,
   ScrollView,
   Text,
   VStack
@@ -22,29 +22,70 @@ import { ErrorReportModal } from "@components/ErrorReportModal";
 import { ReadMoreModal } from "@components/ReadMoreModal";
 import { useRoute } from "@react-navigation/native";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
-import { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export function Player() {
   const route = useRoute<any>();
   const sound = useRef<Audio.Sound | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false)
   const [rate, setRate] = useState(1.0)
   const playbackRateRef = useRef(1.0)
   const { audiobook } = route.params;
-
-  console.log(audiobook)
+  const [fileCurrent, setFileCurrent] = useState({
+    titleChapter: audiobook?.chapters[0]?.title ?? '',
+    fileUrl: audiobook?.chapters[0]?.file ?? ''
+  })
 
   async function handleAudioPlayPause() {
-    const audioURL = 'https://virtus-bucket.s3.us-east-2.amazonaws.com/AWS_BUCKET_NAME/8434d5b7-df69-415e-b476-5ee2c7505c0a-PREF%C3%83%C2%81CIO+(1).wav';
+    setIsPlayingAudio(!isPlayingAudio)
+    const fileUrl = fileCurrent.fileUrl;
 
-    if (!sound.current) {
-      sound.current = new Audio.Sound()
-      await sound?.current.loadAsync({ uri: audioURL }, { shouldPlay: true, rate: 2.0 },);
+    if (sound) {
+      const status = await sound?.current?.getStatusAsync();
+
+      if (status?.isLoaded) {
+
+        if (status?.isPlaying) {
+          await sound?.current?.pauseAsync();
+          await AsyncStorage.setItem('audioPosition', String(status.positionMillis / 1000));
+          setIsPlayingAudio(false)
+        } else {
+          const storedPosition = await AsyncStorage.getItem('audioPosition');
+          if (storedPosition !== null) {
+            await sound?.current?.setPositionAsync(Number(storedPosition?.replace('.', '')));
+
+            await sound?.current?.setRateAsync(playbackRateRef.current, true);
+            await sound?.current?.playAsync();
+            setIsPlayingAudio(true)
+          }
+        }
+      } else {
+        const { sound: newSound } = await Audio.Sound.createAsync(
+          { uri: fileUrl },
+          { shouldPlay: true }
+        );
+
+        sound.current = newSound;
+
+        setIsPlayingAudio(true)
+
+        // newSound.setOnPlaybackStatusUpdate(async (status: any) => {
+        //   if (status?.isPlaying) {
+        //     await AsyncStorage.setItem('audioPosition', String(status.positionMillis / 1000));
+        //   }
+        // });
+
+        await newSound.setRateAsync(playbackRateRef.current, true);
+        await newSound.playAsync();
+      }
     }
+  }
 
-    await sound.current.setPositionAsync(0);
-    await sound.current.setRateAsync(playbackRateRef.current, true)
-    await sound.current.playAsync();
+  const handleResetPosition = async () => {
+    await sound?.current?.setPositionAsync(0);
   }
 
   const handleChangeRate = async (newRate: number) => {
@@ -59,10 +100,6 @@ export function Player() {
     }
   };
 
-  useEffect(() => {
-    console.log(sound.current)
-  }, [])
-
   return (
     <VStack
       flex={1}
@@ -76,9 +113,12 @@ export function Player() {
         <VStack px="14px" mt="18px">
           <HStack>
             <Image
-              source={BookCoverLgImage}
+              source={{ uri: audiobook?.cover }}
+              w={145}
+              h={213}
               alt="Book Cover Large"
               resizeMode="contain"
+              resizeMethod='resize'
             />
             <VStack ml="19px">
               <Text
@@ -89,14 +129,14 @@ export function Player() {
                 Sinópse:
               </Text>
               <Text
-                fontSize="12px"
+                fontSize={RFValue(12)}
                 fontFamily="inriaRegular"
                 color="black"
-                w="193px"
-                lineHeight="15px"
-                numberOfLines={8}
+                w={RFValue(193)}
+                lineHeight={RFValue(15)}
+                numberOfLines={6}
               >
-                {audiobook.sinopse}
+                {audiobook?.sinopse}
               </Text>
               <HStack
                 mt="auto"
@@ -104,7 +144,7 @@ export function Player() {
                 alignItems="center"
               >
                 <ReadMoreModal
-                  sinopse={audiobook.sinopse}
+                  sinopse={audiobook?.sinopse}
                   position="absolute"
                   top="114px"
                   left="30px"
@@ -124,7 +164,7 @@ export function Player() {
             bg="gray.75"
           >
             <Text
-              fontSize="24px"
+              fontSize={'24px'}
               fontFamily="inriaBold"
               color="red.900"
             >
@@ -135,11 +175,11 @@ export function Player() {
               justifyContent="space-between"
             >
               <Text
-                fontSize="20px"
+                fontSize={'20px'}
                 fontFamily="inriaRegular"
                 color="gray.300"
               >
-                Prefácio
+                {fileCurrent.titleChapter}
               </Text>
               <Image
                 source={EditIconImage}
@@ -151,15 +191,16 @@ export function Player() {
               />
             </HStack>
             <Box
-              w="336px"
+              w="100%"
               h="54px"
               bg="gray.900"
               justifyContent="flex-start"
               pl="10px"
               mt="12px"
               flexDir="row"
+              alignItems="center"
             >
-              <Button
+              {/* <Button
                 onPress={handleAudioPlayPause}
                 variant="unstyled"
                 w="41px"
@@ -178,7 +219,7 @@ export function Player() {
                   resizeMode="contain"
                 />
                 <FontAwesome5 name="pause" size={24} color="gray.900" />
-              </Button>
+              </Button> */}
               <Button
                 onPress={handleAudioPlayPause}
                 variant="unstyled"
@@ -189,7 +230,7 @@ export function Player() {
                 alignItems="center"
                 justifyContent="center"
               >
-                {sound?.current?.getStatusAsync() ? (
+                {isPlayingAudio ? (
                   <FontAwesome5 name="pause" size={24} color="gray.900" />
                 ) : (
                   <Image
@@ -202,7 +243,7 @@ export function Player() {
                   />
                 )}
               </Button>
-              <HStack alignItems="flex-end">
+              <HStack alignItems="flex-end" mt="auto">
                 <Button
                   variant="unstyled"
                   onPress={() => handleChangeRate(0.75)}
@@ -220,7 +261,7 @@ export function Player() {
                   onPress={() => handleChangeRate(1)}
                 >
                   <Text
-                    fontFamily={`${rate === 0.75 ? 'inriaBold' : 'inriaRegular'}`}
+                    fontFamily={`${rate === 1 ? 'inriaBold' : 'inriaRegular'}`}
                     color={`${rate === 1 ? 'white' : 'gray.300'}`}
                   >
                     1x
@@ -231,7 +272,7 @@ export function Player() {
                   onPress={() => handleChangeRate(1.25)}
                 >
                   <Text
-                    fontFamily="inriaRegular"
+                    fontFamily={`${rate === 1.25 ? 'inriaBold' : 'inriaRegular'}`}
                     color={`${rate === 1.25 ? 'white' : 'gray.300'}`}
                   >
                     1.25x
@@ -242,8 +283,8 @@ export function Player() {
                   onPress={() => handleChangeRate(1.5)}
                 >
                   <Text
-                    fontFamily={`${rate === 0.75 ? 'inriaBold' : 'inriaRegular'}`}
-                    color={`${rate === 1.25 ? 'white' : 'gray.300'}`}
+                    fontFamily={`${rate === 1.5 ? 'inriaBold' : 'inriaRegular'}`}
+                    color={`${rate === 1.5 ? 'white' : 'gray.300'}`}
                   >
                     1.5x
                   </Text>
@@ -263,6 +304,7 @@ export function Player() {
                 variant="unstyled"
                 px={0}
                 py={0}
+                onPress={handleResetPosition}
               >
                 <Image
                   source={ReturnToStartIconImage}
@@ -278,7 +320,7 @@ export function Player() {
 
         </VStack>
         <VStack
-          w="366px"
+          w={"97%"}
           maxHeight="225px"
           overflow="hidden"
           pt="18px"
@@ -292,63 +334,54 @@ export function Player() {
           >
             Sumário
           </Text>
-          <HStack>
-            <ScrollView>
+          <HStack w="100%">
+            <ScrollView maxH="225px" nestedScrollEnabled showsVerticalScrollIndicator={false}>
               <VStack>
-                <VStack
-                  right={9}
-                  mt="35px"
-                  position="absolute"
-                >
-                  <Image
-                    source={PolygonIconImage}
-                    alt="Polygon Icon"
-                    resizeMethod="resize"
-                    resizeMode="contain"
-                    style={{
-                      transform: [{ rotate: '270deg' }]
-                    }}
-                  />
-                  <Image
-                    mt="10px"
-                    source={PolygonIconImage}
-                    alt="Polygon Icon"
-                    resizeMethod="resize"
-                    resizeMode="contain"
-                    style={{
-                      transform: [{ rotate: '90deg' }]
-                    }}
-                  />
-                </VStack>
-                <CardChapterName chapterName="Prefácio" />
-                {audiobook?.chapters?.map(() => (
-                  <CardChapterName
-                    isCurrentChapter
-                    chapterName="Capítulo 1 - Aqui o texto livro começa de fato"
-                  />
+                {audiobook?.chapters?.map((chapter: any) => (
+                  <Pressable key={chapter.id} onPress={() => {
+                    setFileCurrent({
+                      fileUrl: chapter.file,
+                      titleChapter: chapter.title
+                    })
+                    setIsPlayingAudio(false)
+                  }} >
+                    <CardChapterName
+                      isCurrentChapter={chapter.file === fileCurrent.fileUrl}
+                      chapterName={chapter.title}
+                    />
+                  </Pressable>
                 ))}
-                {/* <CardChapterName
-                  isCurrentChapter
-                  chapterName="Capítulo 1 - Aqui o texto livro começa de fato"
-                />
-                <CardChapterName
-                  chapterName="Capítulo 2 - Fonte deve ser pequena"
-                />
-                <CardChapterName
-                  chapterName="Capítulo 3 - Reticências para títulos longos"
-                />
-                <CardChapterName
-                  chapterName="Capítulo 4 - Reticências para títulos longos"
-                />
-                <CardChapterName
-                  chapterName="Capítulo 5 - Reticências para títulos longos"
-                /> */}
               </VStack>
             </ScrollView>
+
+            <VStack
+              mt="35px"
+              mr="24px"
+            >
+              <Image
+                source={PolygonIconImage}
+                alt="Polygon Icon"
+                resizeMethod="resize"
+                resizeMode="contain"
+                style={{
+                  transform: [{ rotate: '270deg' }]
+                }}
+              />
+              <Image
+                mt="10px"
+                source={PolygonIconImage}
+                alt="Polygon Icon"
+                resizeMethod="resize"
+                resizeMode="contain"
+                style={{
+                  transform: [{ rotate: '90deg' }]
+                }}
+              />
+            </VStack>
           </HStack>
         </VStack>
       </ScrollView >
-      <BuyPhysicalBookFooter />
+      <BuyPhysicalBookFooter linkPurchase={audiobook?.linkPurchase} />
     </VStack >
   )
 }

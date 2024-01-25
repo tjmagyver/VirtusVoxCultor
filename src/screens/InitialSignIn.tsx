@@ -6,6 +6,7 @@ import BackgroundImage from "@assets/background.png";
 import IconApplication from '@assets/icon.png';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AuthStackParamList } from "@routes/auth.routes";
+import { RFValue } from "react-native-responsive-fontsize";
 
 type InitialSignInProps = NativeStackScreenProps<AuthStackParamList, 'InitialSignIn'>
 
@@ -41,7 +42,7 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
         fontSize="30px"
         textAlign="center"
         lineHeight="40px"
-        w="246px"
+        w={RFValue(246)}
         marginTop={10}
       >
         O acervo da editora Cultor de Livros, como conselhos ao pé do ouvido.
