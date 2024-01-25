@@ -16,7 +16,18 @@
       }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "preview",
+      "env": {
+        "ENVIRONMENT": "DEV",
+        "BASE_URL_API": "https://virtus-vox-cultor-server.vercel.app",
+        "BASE_URL_API_DEV": "https://localhost:3333",
+        "STRIPE_PUBLIC_KEY": "pk_test_51OVfawAzxlqmDZEbKckQZ3hehufHyfWBE7MmNkDKx2CgV2Wqeha6xBqIiHPs6Dp8oVt2fki9U6SefW1wAB7IGB4I00ayyroqgz",
+        "ASYNC_STORAGE_KEY": "@virtus:token"
+      }
     },
     "production": {}
   },
