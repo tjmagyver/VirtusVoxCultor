@@ -37,16 +37,20 @@ export function Home() {
   return (
     <VStack
       flex={1}
-      alignItems="flex-start"
+      alignItems="center"
       justifyContent="flex-start"
       bg="background"
     >
       <Header />
+
+      {/* <StatusBar backgroundColor={'000C2B'} /> */}
       <ScrollView
         showsVerticalScrollIndicator={false}
       >
         <VStack
           pb="110px"
+          alignItems="center"
+          justifyContent="center"
         >
           <YourLibrary audiobooks={audiobooks} />
           <AudiobookList

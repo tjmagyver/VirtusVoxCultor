@@ -122,7 +122,7 @@ export function Player() {
             />
             <VStack ml="19px">
               <Text
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 fontFamily="inriaRegular"
                 color="gray.300"
               >
@@ -164,7 +164,7 @@ export function Player() {
             bg="gray.75"
           >
             <Text
-              fontSize={'24px'}
+              fontSize={RFValue(24)}
               fontFamily="inriaBold"
               color="red.900"
             >
@@ -175,7 +175,7 @@ export function Player() {
               justifyContent="space-between"
             >
               <Text
-                fontSize={'20px'}
+                fontSize={RFValue(20)}
                 fontFamily="inriaRegular"
                 color="gray.300"
               >
@@ -200,26 +200,6 @@ export function Player() {
               flexDir="row"
               alignItems="center"
             >
-              {/* <Button
-                onPress={handleAudioPlayPause}
-                variant="unstyled"
-                w="41px"
-                h="41px"
-                rounded="full"
-                bg="gray.100"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Image
-                  source={PolygonPlayIconImage}
-                  w="20px"
-                  h="20px"
-                  alt="Polygon Black Icon"
-                  resizeMethod="resize"
-                  resizeMode="contain"
-                />
-                <FontAwesome5 name="pause" size={24} color="gray.900" />
-              </Button> */}
               <Button
                 onPress={handleAudioPlayPause}
                 variant="unstyled"
@@ -329,7 +309,7 @@ export function Player() {
         >
           <Text
             fontFamily="inriaRegular"
-            fontSize="24px"
+            fontSize={RFValue(24)}
             color="red.900"
           >
             Sumário
@@ -381,7 +361,7 @@ export function Player() {
           </HStack>
         </VStack>
       </ScrollView >
-      <BuyPhysicalBookFooter linkPurchase={audiobook?.linkPurchase} />
+      <BuyPhysicalBookFooter linkPurchase={'https://cultordelivros.com.br/'} />
     </VStack >
   )
 }

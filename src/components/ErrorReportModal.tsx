@@ -6,6 +6,7 @@ import {
   WarningTwoIcon
 } from "native-base";
 import { useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export function ErrorReportModal({ ...rest }: IBoxProps) {
   const [showModalErrorReport, setShowModalErrorReport] = useState(false);
@@ -14,7 +15,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
   return (
     <>
       <Button
-        w="98px"
+        w="112px"
         h="25px"
         bg="gray.100"
         px={0}
@@ -33,7 +34,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
         onPress={() => setShowModalErrorReport(true)}
       >
         <Text
-          fontSize="12px"
+          fontSize={RFValue(12)}
           fontFamily="inriaRegular"
           color="gray.300"
         >
@@ -60,7 +61,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
             px="34px"
           >
             <Text
-              fontSize="12px"
+              fontSize={RFValue(12)}
               fontFamily="inriaLight"
               color="gray.350"
               textAlign="center"
@@ -95,7 +96,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
                 bg="white"
                 placeholderTextColor="gray.100"
                 color="gray.900"
-                fontSize="14px"
+                fontSize={RFValue(14)}
                 fontFamily="inriaLight"
                 value={descriptionError}
                 onChangeText={text => setDescriptionError(text)}
@@ -112,7 +113,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
               ml="auto"
             >
               <Text
-                fontSize="12px"
+                fontSize={RFValue(12)}
                 fontFamily="inriaLight"
                 color="gray.350"
                 mr="6px"
@@ -123,7 +124,7 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
                 w="209px"
                 h="24px"
                 shadow={4}
-                fontSize="14px"
+                fontSize={RFValue(14)}
                 placeholderTextColor="gray.100"
                 color="gray.900"
                 py={0}

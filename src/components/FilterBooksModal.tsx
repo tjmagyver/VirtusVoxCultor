@@ -2,6 +2,7 @@ import { Button, HStack, IBoxProps, Image, Modal, Text, VStack } from "native-ba
 
 import PolygonBlackIconImage from '@assets/polygonBlackIcon.png';
 import { useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 import { CardFilterName } from "./CardFilterName";
 
 export function FilterBooksModal({ ...rest }: IBoxProps) {
@@ -55,7 +56,7 @@ export function FilterBooksModal({ ...rest }: IBoxProps) {
             >
               <Text
                 fontFamily="inriaRegular"
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 color="gray.900"
               >
                 Listar por:

@@ -61,7 +61,7 @@ export function CardPlans({
           <Text
             fontFamily="inriaBold"
             color="gray.900"
-            fontSize="45px"
+            fontSize={RFValue(45)}
             mt="2px"
           >
             R$ {price}
@@ -69,7 +69,7 @@ export function CardPlans({
           <Text
             fontFamily="inriaRegular"
             color="gray.300"
-            fontSize="15px"
+            fontSize={RFValue(15)}
             ml="10px"
             mt="-6px"
           >
@@ -80,7 +80,7 @@ export function CardPlans({
           <Text
             fontFamily="inriaRegular"
             color="gray.900"
-            fontSize="15px"
+            fontSize={RFValue(15)}
           >
             /Mês
           </Text>
@@ -90,7 +90,7 @@ export function CardPlans({
             h={RFValue(22)}
             px="20px"
             rounded={5}
-            fontSize={12}
+            fontSize={RFValue(12)}
             fontFamily="inriaBold"
             onPress={onNavigateCheckout}
           />

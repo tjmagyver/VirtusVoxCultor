@@ -2,6 +2,7 @@ import { Button, HStack, Image, Text, VStack } from "native-base";
 
 import BuyBookImage from '@assets/buyBook.png';
 import { Linking } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface BuyPhysicalBookFooterProps {
   linkPurchase: string
@@ -34,7 +35,7 @@ export function BuyPhysicalBookFooter({
         <Button variant="unstyled" px={0} py={0} onPress={() => Linking.openURL(linkPurchase)}>
           <Text
             fontFamily="inriaRegular"
-            fontSize="23px"
+            fontSize={RFValue(23)}
             color="red.900"
             mt="10px"
           >
@@ -43,7 +44,7 @@ export function BuyPhysicalBookFooter({
         </Button>
         <Text
           fontFamily="inriaRegular"
-          fontSize="15px"
+          fontSize={RFValue(15)}
           color="gray.900"
           mb="16px"
           ml="2px"

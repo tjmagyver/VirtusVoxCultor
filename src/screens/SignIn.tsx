@@ -22,6 +22,7 @@ import { AuthStackParamList } from '@routes/auth.routes';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import reactotron from 'reactotron-react-native';
 import { z } from 'zod';
 import { useAuth } from './../hooks/auth';
@@ -117,7 +118,7 @@ export function SignIn({ navigation }: SignInProps) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               textAlign="center"
               lineHeight="40px"
             >Login ou e-mail</Text>
@@ -147,7 +148,7 @@ export function SignIn({ navigation }: SignInProps) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               textAlign="center"
               lineHeight="40px"
             >Senha</Text>
@@ -176,7 +177,7 @@ export function SignIn({ navigation }: SignInProps) {
             <Text
               fontFamily="inriaRegular"
               color="#00F0FF"
-              fontSize="12px"
+              fontSize={RFValue(12)}
               textAlign="right"
               lineHeight="40px"
             >*Esqueci minha senha</Text>
@@ -190,7 +191,7 @@ export function SignIn({ navigation }: SignInProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="12px"
+                fontSize={RFValue(12)}
                 lineHeight="40px"
                 marginLeft="6px"
               >Lembrar de mim</Text>
@@ -211,7 +212,7 @@ export function SignIn({ navigation }: SignInProps) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="22px"
+              fontSize={RFValue(22)}
               lineHeight="40px"
               marginTop="6px"
             >

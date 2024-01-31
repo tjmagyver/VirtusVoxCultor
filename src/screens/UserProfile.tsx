@@ -15,6 +15,7 @@ import PolygonIconGrayImage from '@assets/polygonIconGray.png';
 import { CardReaderProfileType } from "@components/CardReaderProfileType";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppStackParamList } from "@routes/app.routes";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useAuth } from "./../hooks/auth";
 
 type UserProfileProps = NativeStackScreenProps<AppStackParamList, 'UserProfile'>
@@ -42,7 +43,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
         >
           <Text
             fontFamily="inriaRegular"
-            fontSize="24px"
+            fontSize={RFValue(24)}
             color="red.900"
             textAlign="center"
           >
@@ -50,7 +51,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           </Text>
           <Text
             fontFamily="inriaRegular"
-            fontSize="15px"
+            fontSize={RFValue(15)}
             color="teal.100"
             textAlign="center"
             mt="17px"
@@ -91,7 +92,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           </ScrollView>
           <Text
             fontFamily="inriaRegular"
-            fontSize="12px"
+            fontSize={RFValue(12)}
             color="gray.300"
             textAlign="center"
             mt="17px"
@@ -108,7 +109,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           <VStack>
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="gray.900"
               mb="-10px"
             >
@@ -120,7 +121,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
             >
               <Text
                 fontFamily="inriaRegular"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 color="gray.300"
               >
                 {user?.name}
@@ -130,7 +131,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
               >
                 <Text
                   fontFamily="inriaRegular"
-                  fontSize="20px"
+                  fontSize={RFValue(20)}
                   color="blue.100"
                 >
                   Alterar senha
@@ -141,14 +142,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
           <VStack mt={5}>
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="gray.900"
             >
               E-mail vinculado:
             </Text>
             <Text
               fontFamily="inriaRegular"
-              fontSize="20px"
+              fontSize={RFValue(20)}
               color="gray.300"
             >
               {user?.email}
@@ -157,14 +158,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
           <VStack mt={5}>
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="gray.900"
             >
               Primeiro acesso:
             </Text>
             <Text
               fontFamily="inriaRegular"
-              fontSize="20px"
+              fontSize={RFValue(20)}
               color="gray.300"
             >
               {new Date(user?.createdAt).toLocaleDateString('pt-BR', {
@@ -183,14 +184,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.900"
-                fontSize="15px"
+                fontSize={RFValue(15)}
               >
                 Status da conta:
               </Text>
               <Text
                 fontFamily="inriaRegular"
                 color="blue.100"
-                fontSize="16px"
+                fontSize={RFValue(16)}
               >
                 {user?.isSigned ? 'Ativa' : 'Desativada'}
               </Text>
@@ -200,14 +201,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.900"
-                fontSize="15px"
+                fontSize={RFValue(15)}
               >
                 Vigência
               </Text>
               <Text
                 fontFamily="inriaRegular"
                 color="blue.100"
-                fontSize="16px"
+                fontSize={RFValue(16)}
               >
                 até 03/01/2024
               </Text>
@@ -219,7 +220,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           >
             <Text
               fontFamily="inriaRegular"
-              fontSize="20px"
+              fontSize={RFValue(20)}
               color="blue.100"
             >
               Mudar método de pagamento
@@ -238,7 +239,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           >
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="gray.900"
             >
               {'< Voltar'}
@@ -250,7 +251,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
           >
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="red.900"
             >
               {'Sair do aplicativo'}

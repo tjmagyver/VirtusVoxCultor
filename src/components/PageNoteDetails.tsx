@@ -1,6 +1,7 @@
 import {
   Box, CloseIcon, IBoxProps, IconButton, Text
 } from 'native-base';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 interface NoteDetails {
   noteNumber: string;
@@ -24,7 +25,7 @@ export function PageNoteDetails({
       {...rest}
     >
       <Text
-        fontSize="12px"
+        fontSize={RFValue(12)}
         fontFamily="inriaRegular"
         color="gray.350"
         letterSpacing="0.7px"
@@ -61,7 +62,7 @@ export function PageNoteDetails({
             }
             <Text
               key={note.noteNumber}
-              fontSize="11px"
+              fontSize={RFValue(11)}
               fontFamily="inriaLight"
               color="gray.350"
               letterSpacing="0.5px"

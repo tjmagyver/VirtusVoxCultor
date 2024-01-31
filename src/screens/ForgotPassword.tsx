@@ -8,6 +8,7 @@ import IconApplication from '@assets/icon.png';
 import { Button } from '@components/Button';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '@routes/auth.routes';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 type ForgotPasswordProps = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>
 
@@ -36,7 +37,7 @@ export function ForgotPassword({ navigation }: ForgotPasswordProps) {
         <Text
           fontFamily="heading"
           color="white"
-          fontSize="25px"
+          fontSize={RFValue(25)}
           textAlign="center"
           w="68%"
           mt={6}
@@ -46,7 +47,7 @@ export function ForgotPassword({ navigation }: ForgotPasswordProps) {
         <Text
           fontFamily="inriaRegular"
           color="white"
-          fontSize="15px"
+          fontSize={RFValue(15)}
           textAlign="center"
           w="68%"
           mt={6}
@@ -59,7 +60,7 @@ export function ForgotPassword({ navigation }: ForgotPasswordProps) {
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize="15px"
+            fontSize={RFValue(15)}
             textAlign="center"
             lineHeight="40px"
           >Email:</Text>
@@ -75,7 +76,7 @@ export function ForgotPassword({ navigation }: ForgotPasswordProps) {
         <Text
           fontFamily="inriaRegular"
           color="white"
-          fontSize={"16px"}
+          fontSize={RFValue(16)}
           lineHeight="40px"
           marginTop="6px"
         >Ainda não sou cadastrado</Text>
@@ -88,7 +89,7 @@ export function ForgotPassword({ navigation }: ForgotPasswordProps) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="20px"
+              fontSize={RFValue(20)}
             >
               {'< Voltar'}
             </Text>

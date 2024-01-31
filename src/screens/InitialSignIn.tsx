@@ -39,7 +39,7 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
       <Text
         fontFamily="heading"
         color="white"
-        fontSize="30px"
+        fontSize={RFValue(30)}
         textAlign="center"
         lineHeight="40px"
         w={RFValue(246)}
@@ -61,7 +61,7 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
         <Text
           fontFamily="inriaRegular"
           color="white"
-          fontSize="22px"
+          fontSize={RFValue(22)}
           lineHeight="40px"
           marginTop="6px"
         >

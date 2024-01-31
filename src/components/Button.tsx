@@ -1,5 +1,6 @@
 import { Button as ButtonNativeBase, IButtonProps } from 'native-base';
 import { ActivityIndicator } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 interface ButtonProps extends IButtonProps {
   title: string;
@@ -11,7 +12,7 @@ interface ButtonProps extends IButtonProps {
 
 export function Button({
   title,
-  fontSize = 25,
+  fontSize = RFValue(25),
   fontFamily = "jostRegular",
   rounded = 10,
   isLoading = false,

@@ -7,6 +7,7 @@ import { Button } from "@components/Button";
 import { CardPlans } from "@components/CardPlans";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppStackParamList } from "@routes/app.routes";
+import { RFValue } from "react-native-responsive-fontsize";
 
 type PlansProps = NativeStackScreenProps<AppStackParamList, 'Plans'>
 
@@ -42,7 +43,7 @@ export function Plans({ navigation }: PlansProps | any) {
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize="25px"
+            fontSize={RFValue(25)}
             textAlign="center"
             w="68%"
             mt={6}
@@ -90,7 +91,7 @@ export function Plans({ navigation }: PlansProps | any) {
             w="194px"
             mt={6}
             h={38}
-            fontSize={18}
+            fontSize={RFValue(20)}
             onPress={handleGoBack}
           />
 
@@ -102,7 +103,7 @@ export function Plans({ navigation }: PlansProps | any) {
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="20px"
+                fontSize={RFValue(20)}
               >
                 {'< Voltar'}
               </Text>

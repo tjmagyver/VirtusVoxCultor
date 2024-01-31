@@ -2,6 +2,7 @@ import { HStack, IBoxProps, ScrollView, Text, VStack } from "native-base";
 
 
 import { AudiobookData } from "@screens/Home";
+import { RFValue } from "react-native-responsive-fontsize";
 import reactotron from "reactotron-react-native";
 import { CardAudioBook } from "./CardAudiobook";
 
@@ -32,7 +33,7 @@ export function AudiobookList({
         alignItems="flex-start"
       >
         <Text
-          fontSize="24px"
+          fontSize={RFValue(24)}
           fontFamily="inriaBold"
           color="red.900"
         >
@@ -44,7 +45,7 @@ export function AudiobookList({
           w="100%"
         >
           <Text
-            fontSize="10px"
+            fontSize={RFValue(10)}
             fontFamily="inriaRegular"
             fontStyle="italic"
             color="gray.300"
@@ -53,7 +54,7 @@ export function AudiobookList({
           </Text>
 
           <Text
-            fontSize="12px"
+            fontSize={RFValue(12)}
             fontFamily="inriaRegular"
             color="gray.300"
             ml="auto"

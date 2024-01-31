@@ -19,6 +19,7 @@ import { AuthStackParamList } from '@routes/auth.routes';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { z } from 'zod';
 import { api } from './../services/api';
 
@@ -109,7 +110,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               textAlign="left"
               lineHeight="40px"
             >Nome:</Text>
@@ -139,7 +140,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               textAlign="left"
               lineHeight="40px"
             >Email:</Text>
@@ -169,7 +170,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               textAlign="left"
               lineHeight="40px"
             >Usuário:</Text>
@@ -199,7 +200,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 textAlign="left"
                 lineHeight="40px"
               >Senha:</Text>
@@ -230,7 +231,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 textAlign="left"
                 lineHeight="40px"
               >Confirmar senha:</Text>
@@ -275,7 +276,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="20px"
+              fontSize={RFValue(20)}
               textAlign="center"
               mt={6}
             >
@@ -294,7 +295,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="20px"
+                fontSize={RFValue(20)}
               >
                 {'< Voltar'}
               </Text>

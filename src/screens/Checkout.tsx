@@ -10,6 +10,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppStackParamList } from "@routes/app.routes";
 import { CardField } from "@stripe/stripe-react-native";
 import { Alert } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useAuth } from "../../src/hooks/auth";
 import { api } from "../../src/services/api";
 
@@ -92,7 +93,7 @@ export function Checkout({ navigation }: CheckoutProps) {
         <Text
           fontFamily="inriaRegular"
           color="white"
-          fontSize="25px"
+          fontSize={RFValue(25)}
           textAlign="center"
           w="68%"
           mt={6}
@@ -136,7 +137,7 @@ export function Checkout({ navigation }: CheckoutProps) {
           title="Inscrever"
           w="194px"
           h={38}
-          fontSize={18}
+          fontSize={RFValue(18)}
           fontFamily="inriaRegular"
           onPress={handlePayment}
         />
@@ -149,7 +150,7 @@ export function Checkout({ navigation }: CheckoutProps) {
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize="20px"
+            fontSize={RFValue(20)}
           >
             {'< Voltar'}
           </Text>

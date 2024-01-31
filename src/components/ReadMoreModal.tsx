@@ -53,25 +53,10 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
               color="black"
               fontFamily="inriaRegular"
               fontSize={RFValue(12)}
-              letterSpacing={RFValue(0.06)}
+              letterSpacing='0.06px'
               lineHeight={RFValue(15)}
             >
               {sinopse}
-              {/* Em Dominus Vobiscum, São Pedro Damião reflete sobre a natureza e a
-              forma da liturgia da missa, quando rezada pelo sacerdote
-              privadamente, sem presença do povo. Um assunto pouco explorado e
-              pouco compreendido, mas de suma importância quando entendemos que
-              cada membro da Igreja está unido ao Corpo Místico, e suas ações
-              privadas também fazem parte deste Corpo. Essa perspectiva pode
-              revolucionar a forma como os sacerdotes celebram e como os fiéis
-              participam da ação litúrgica e, também, como fazem suas
-              orações diárias.  */}
-              {'\n'} {'\n'}
-
-              Para esta edição, além do texto original e integral, trazemos
-              também contribuições do Papa Bento XVI, e artigos do Ir. Vanderlei
-              de Lima e do Pe. Bruno Roberto Rossi, que complementam a visão de
-              São Pedro Damião com considerações atuais sobre a Santa Missa.
             </Text>
             <HStack
               ml="22px"
@@ -79,7 +64,7 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
               mb="16px"
             >
               <Text
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 fontFamily="inriaRegular"
                 color="gray.350"
               >
@@ -87,7 +72,7 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
                 <Input
                   bg="white"
                   color="gray.900"
-                  fontSize="15px"
+                  fontSize={RFValue(15)}
                   fontFamily="body"
                   w="57px"
                   h="26px"
@@ -110,7 +95,7 @@ export function ReadMoreModal({ sinopse, ...rest }: ReadMoreModalProps) {
               onPress={() => setShowModalReadMore(false)}
             >
               <Text
-                fontSize="15px"
+                fontSize={RFValue(15)}
                 fontFamily="inriaRegular"
                 color="gray.900"
               >

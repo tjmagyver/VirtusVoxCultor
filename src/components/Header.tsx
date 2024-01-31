@@ -6,6 +6,7 @@ import ProfileIconImage from '@assets/profileIcon.png';
 import SearchIconImage from '@assets/searchIcon.png';
 import VirtusIconInactiveImage from '@assets/virtusIconInactive.png';
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useAuth } from "./../hooks/auth";
 import { CardToggleSubscription } from "./CardToggleSubscription";
 
@@ -60,14 +61,14 @@ export function Header() {
 
           <VStack>
             <Text
-              fontSize="12px"
+              fontSize={RFValue(12)}
               fontFamily="inriaRegular"
               color="white"
             >
               Status:
             </Text>
             <Text
-              fontSize="14px"
+              fontSize={RFValue(14)}
               fontFamily="inriaRegular"
               color="gray.300"
             >
@@ -113,14 +114,14 @@ export function Header() {
 
           <VStack>
             <Text
-              fontSize="12px"
+              fontSize={RFValue(12)}
               fontFamily="inriaRegular"
               color="white"
             >
               Perfil:
             </Text>
             <Text
-              fontSize="14px"
+              fontSize={RFValue(14)}
               fontFamily="inriaRegular"
               color="teal.300"
             >

@@ -49,7 +49,6 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
         <HStack
           alignItems="center"
           w="59px"
-          h={RFValue(21)}
           borderBottomWidth={1}
           borderBottomColor="gray.300"
         >
@@ -62,7 +61,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
             resizeMode="contain"
           />
           <Text
-            fontSize="16px"
+            fontSize={RFValue(16)}
             fontFamily="inriaRegular"
             color="gray.300"
             ml="2px"
@@ -77,8 +76,8 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
       >
         <Modal.Content
           {...rest}
-          w={RFValue(366)}
-          h={RFValue(437)}
+          w="366px"
+          h="437px"
           rounded="10px"
           bg="white"
         >
@@ -98,7 +97,6 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
               <HStack
                 alignItems="center"
                 w="59px"
-                h={RFValue(21)}
                 borderBottomWidth={1}
                 borderBottomColor="gray.300"
               >
@@ -111,7 +109,7 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   resizeMode="contain"
                 />
                 <Text
-                  fontSize="16px"
+                  fontSize={RFValue(16)}
                   fontFamily="inriaRegular"
                   color="gray.300"
                   ml="2px"
@@ -124,8 +122,8 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
                   variant="unstyled"
                   px={0}
                   py={0}
-                  w={RFValue(77)}
-                  h={RFValue(28)}
+                  w="77px"
+                  h="28px"
                   borderWidth={originalsNotesSelected ? 2 : 0}
                   borderColor="gray.100"
                   borderRadius="5px"

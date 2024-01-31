@@ -1,6 +1,7 @@
 import { Image, Text, VStack } from "native-base";
 
 import BookCoverImage from '@assets/bookCover.png';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export function AudioControlsFooter() {
   return (
@@ -20,21 +21,22 @@ export function AudioControlsFooter() {
         top="-45px"
         left="16px"
         resizeMode="contain"
+        resizeMethod="resize"
       />
       <Text
-        fontSize="20px"
+        fontSize={RFValue(20)}
         fontFamily="inriaRegular"
         color="red.900"
-        ml="20px"
+        ml="30px"
         mt="16px"
       >
         {'CONTINUAR OUVINDO >'}
       </Text>
       <Text
-        fontSize="16px"
+        fontSize={RFValue(16)}
         fontFamily="inriaRegular"
         color="gray.300"
-        ml="7px"
+        ml="22px"
       >
         Reiniciar o capítulo recente.
       </Text>

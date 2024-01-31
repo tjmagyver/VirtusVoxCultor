@@ -1,4 +1,5 @@
 import { Center, ICenterProps, Text } from "native-base";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface CardFilterNameProps extends ICenterProps {
   filterName: string;
@@ -21,7 +22,7 @@ export function CardFilterName({
     >
       <Text
         fontFamily="inriaRegular"
-        fontSize="12px"
+        fontSize={RFValue(12)}
         color="gray.900"
       >
         {filterName}

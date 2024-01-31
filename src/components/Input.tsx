@@ -1,4 +1,5 @@
 import { IInputProps, Input as NativeBaseInput } from 'native-base';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export function Input({ ...rest }: IInputProps) {
   return (
@@ -8,7 +9,7 @@ export function Input({ ...rest }: IInputProps) {
       rounded="5px"
       h={10}
       px={4}
-      fontSize='md'
+      fontSize={RFValue(16)}
       fontFamily="body"
       borderWidth={0}
       _focus={{

@@ -1,5 +1,6 @@
 import { Button, IButtonProps } from "native-base";
 import { ReactElement } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface SignInSocialButtonProps extends IButtonProps {
   bg?: string;
@@ -27,7 +28,7 @@ export function SignInSocialButton({
       _text={{
         color: `${textColor}`,
         fontFamily: 'inriaRegular',
-        fontSize: '16px',
+        fontSize: `${RFValue(16)}`,
       }}
       _pressed={{
         bg: `${bg}`,

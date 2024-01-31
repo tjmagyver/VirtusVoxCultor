@@ -78,7 +78,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
             h="32px"
           />
           <Text
-            fontSize="24px"
+            fontSize={RFValue(24)}
             fontFamily="inriaBold"
             color="red.900"
             ml="6px"
@@ -96,7 +96,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
                 onPress={handleToggleExpandLibrary}
               >
                 <Text
-                  fontSize="15px"
+                  fontSize={RFValue(15)}
                   fontFamily="inriaRegular"
                   color="gray.900"
                   mr="6px"
@@ -134,7 +134,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
               onPress={handleToggleExpandLibrary}
             >
               <Text
-                fontSize="12px"
+                fontSize={RFValue(12)}
                 fontFamily="inriaRegular"
                 color="gray.300"
                 mr="6px"
@@ -157,7 +157,7 @@ export function YourLibrary({ audiobooks }: YourLibraryProps) {
           placeholder="Procurar na minha coleção"
           placeholderTextColor="gray.300"
           fontFamily="inriaLight"
-          fontSize="15px"
+          fontSize={RFValue(15)}
           borderWidth={0}
           _focus={{
             bg: "gray.125",

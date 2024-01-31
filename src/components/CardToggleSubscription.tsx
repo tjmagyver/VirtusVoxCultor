@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { Button, HStack, Switch, Text, VStack } from "native-base";
 import { useEffect, useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useAuth } from "./../hooks/auth";
 import { api } from "./../services/api";
 
@@ -74,14 +75,14 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize="15px"
+            fontSize={RFValue(15)}
           >
             Status:
           </Text>
           <Text
             fontFamily="inriaRegular"
             color={`${user?.isSigned ? 'teal.300' : 'gray.300'}`}
-            fontSize="16px"
+            fontSize={RFValue(16)}
           >
             {user?.isSigned ? 'Ativa' : 'Desativada'}
           </Text>
@@ -91,14 +92,14 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize="15px"
+            fontSize={RFValue(15)}
           >
             {user?.isSigned ? 'Vigência' : 'Primeiro Acesso'}
           </Text>
           <Text
             fontFamily="inriaRegular"
             color="teal.300"
-            fontSize="16px"
+            fontSize={RFValue(16)}
           >
             {user?.isSigned ? 'até 03/01/2024' : user ? `${firstAccess}` : '03 de Outubro 2023'}
           </Text>
@@ -122,7 +123,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml={1}
               >Renovar automático</Text>
             </HStack>
@@ -137,7 +138,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
               <Text
                 fontFamily="inriaRegular"
                 color="red.900"
-                fontSize="12px"
+                fontSize={RFValue(12)}
                 textAlign="right"
               >
                 cancelar assinatura
@@ -161,7 +162,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize="14px"
+              fontSize={RFValue(14)}
               textAlign="center"
             >
               Conheça nossos planos, e 

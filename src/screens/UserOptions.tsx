@@ -14,6 +14,7 @@ import {
   VStack
 } from "native-base";
 import { useState } from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
 type UserOptionsProps = NativeStackScreenProps<AppStackParamList, 'UserOptions'>
 
@@ -33,7 +34,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
   return (
     <VStack
       flex={1}
-      alignItems="flex-start"
+      alignItems="center"
       justifyContent="flex-start"
       bg="background"
     >
@@ -43,12 +44,12 @@ export function UserOptions({ navigation }: UserOptionsProps) {
       >
         <VStack
           mt="75px"
-          px="40px"
           alignItems="center"
+          justifyContent="center"
         >
           <Text
             fontFamily="inriaBold"
-            fontSize="24px"
+            fontSize={RFValue(24)}
             color="red.900"
             textAlign="center"
           >
@@ -66,7 +67,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
               >
                 Passar automático
@@ -83,7 +84,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
               >
                 Continuar de onde parou
@@ -100,22 +101,24 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
               >
                 Desligar a tela aos {' '}
                 <Input
                   bg="white"
                   color="gray.900"
-                  fontSize="16px"
+                  fontSize={RFValue(20)}
                   fontFamily="body"
                   w="40px"
                   h="30px"
                   px={2}
+                  py={0}
                   borderWidth={0}
                   _focus={{
                     bg: 'white'
                   }}
+                  defaultValue='30'
                 /> {' '}
                 seg
               </Text>
@@ -131,13 +134,13 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
               >
                 Desativar notificações
               </Text>
             </HStack>
-            <HStack alignItems="flex-end">
+            <HStack alignItems="flex-start">
               <Switch
                 size="lg"
                 offTrackColor="gray.350"
@@ -148,22 +151,22 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
                 lineHeight="26px"
-                w="190px"
+                w={RFValue(200)}
               >
                 Permitir sobreposição de outros aplicativos
               </Text>
             </HStack>
-            <HStack alignItems="center" mt="27px">
+            <HStack alignItems="center" mt="27px" opacity={0.4}>
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize="20px"
+                fontSize={RFValue(20)}
                 ml="5px"
                 lineHeight="26px"
-                w="143px"
+                w="180px"
               >
                 Sinal sonoro em notas de rodapé
               </Text>
@@ -174,7 +177,9 @@ export function UserOptions({ navigation }: UserOptionsProps) {
                 placeholder="Selecione"
                 color="gray.350"
                 bg="white"
-                fontSize="16px"
+                isDisabled
+                opacity={1}
+                fontSize={RFValue(14)}
                 fontStyle="italic"
                 borderWidth={0}
                 _selectedItem={{
@@ -182,7 +187,6 @@ export function UserOptions({ navigation }: UserOptionsProps) {
                   endIcon: <CheckIcon size="5" color="teal.300" />
                 }}
                 mt={1}
-                ml="17px"
                 onValueChange={
                   itemValue => setToggleFootnoteSound(itemValue)
                 }
@@ -194,7 +198,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
           </VStack>
           <Text
             fontFamily="inriaLight"
-            fontSize="24px"
+            fontSize={RFValue(24)}
             color="gray.350"
             textAlign="center"
             mt="75px"
@@ -232,7 +236,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
                   bg="white"
                   placeholderTextColor="gray.100"
                   color="gray.900"
-                  fontSize="14px"
+                  fontSize={RFValue(14)}
                   value={supportText}
                   onChangeText={text => setSupportText(text)}
                   rounded="10px"
@@ -266,7 +270,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
           >
             <Text
               fontFamily="inriaRegular"
-              fontSize="15px"
+              fontSize={RFValue(15)}
               color="gray.900"
             >
               {'< Voltar'}
