@@ -234,6 +234,7 @@ export function SignUp({ navigation }: SignUpProps | any) {
                 fontSize={RFValue(15)}
                 textAlign="left"
                 lineHeight="40px"
+                noOfLines={1}
               >Confirmar senha:</Text>
               <Controller
                 control={control}
@@ -264,14 +265,13 @@ export function SignUp({ navigation }: SignUpProps | any) {
             title="Cadastrar"
             w="80%"
             mt={8}
-            h="52px"
             onPress={handleSubmit(handleSignUp)}
           />
 
           <ButtonNativeBase
             variant="link"
             onPress={handleNavigatePlans}
-            w="90%"
+            w="100%"
           >
             <Text
               fontFamily="inriaRegular"

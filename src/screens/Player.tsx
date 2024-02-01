@@ -103,15 +103,20 @@ export function Player() {
   return (
     <VStack
       flex={1}
-      alignItems="flex-start"
+      alignItems="center"
       justifyContent="flex-start"
       bg="background"
       pb='12px'
     >
       <Header />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <VStack px="14px" mt="18px">
-          <HStack>
+        <VStack 
+          px="14px" 
+          mt="18px"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <HStack w="100%" overflow="hidden">
             <Image
               source={{ uri: audiobook?.cover }}
               w={145}
@@ -162,6 +167,7 @@ export function Player() {
             px="14px"
             py="12px"
             bg="gray.75"
+            w="100%"
           >
             <Text
               fontSize={RFValue(24)}

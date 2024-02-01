@@ -3,10 +3,13 @@ import { Header } from "@components/Header";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppStackParamList } from "@routes/app.routes";
 import {
-  Button as ButtonNativeBase, CheckIcon,
+  Button as ButtonNativeBase,
+  CheckIcon,
   CloseIcon,
   HStack,
-  IconButton, Input, ScrollView,
+  IconButton,
+  Input,
+  ScrollView,
   Select,
   Switch,
   Text,
@@ -41,6 +44,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
       <Header />
       <ScrollView
         showsVerticalScrollIndicator={false}
+        w="100%"
       >
         <VStack
           mt="75px"
@@ -49,13 +53,13 @@ export function UserOptions({ navigation }: UserOptionsProps) {
         >
           <Text
             fontFamily="inriaBold"
-            fontSize={RFValue(24)}
+            fontSize='3xl'
             color="red.900"
             textAlign="center"
           >
             OPÇÕES DO USUÁRIO
           </Text>
-          <VStack mt="47px" w="100%">
+          <VStack mt="47px" w="100%" px='15px'>
             <HStack alignItems="center">
               <Switch
                 size="lg"
@@ -67,7 +71,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
               >
                 Passar automático
@@ -84,7 +88,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
               >
                 Continuar de onde parou
@@ -101,14 +105,14 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
               >
                 Desligar a tela aos {' '}
                 <Input
                   bg="white"
                   color="gray.900"
-                  fontSize={RFValue(20)}
+                  fontSize='lg'
                   fontFamily="body"
                   w="40px"
                   h="30px"
@@ -134,7 +138,7 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
               >
                 Desativar notificações
@@ -151,28 +155,27 @@ export function UserOptions({ navigation }: UserOptionsProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
                 lineHeight="26px"
-                w={RFValue(200)}
               >
                 Permitir sobreposição de outros aplicativos
               </Text>
             </HStack>
-            <HStack alignItems="center" mt="27px" opacity={0.4}>
+            <HStack alignItems="center" mt="27px" opacity={0.4} justifyContent="space-around">
               <Text
                 fontFamily="inriaRegular"
                 color="gray.350"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml="5px"
                 lineHeight="26px"
-                w="180px"
+                textAlign="left"
               >
-                Sinal sonoro em notas de rodapé
+                Sinal sonoro em {'\n'} notas de rodapé
               </Text>
               <Select
                 selectedValue={toggleFootnoteSound}
-                minWidth="154px"
+                minWidth="174px"
                 accessibilityLabel="Escolha uma opção"
                 placeholder="Selecione"
                 color="gray.350"

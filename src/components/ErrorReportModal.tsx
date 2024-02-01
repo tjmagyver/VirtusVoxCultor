@@ -15,11 +15,8 @@ export function ErrorReportModal({ ...rest }: IBoxProps) {
   return (
     <>
       <Button
-        w="112px"
-        h="25px"
         bg="gray.100"
-        px={0}
-        py={0}
+        p={1}
         _pressed={{
           bg: "gray.100",
           opacity: 0.9,

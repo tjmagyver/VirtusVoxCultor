@@ -44,11 +44,11 @@ export function BookNotesModal({ ...rest }: IBoxProps) {
         variant="unstyled"
         px={0}
         py={0}
-        onPress={() => setShowModalBookNotes(true)}
+        disabled
+        opacity={0.4}
       >
         <HStack
           alignItems="center"
-          w="59px"
           borderBottomWidth={1}
           borderBottomColor="gray.300"
         >

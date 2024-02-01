@@ -17,9 +17,9 @@ export function BuyPhysicalBookFooter({
       h="98px"
       rounded="22px"
       bg="gray.100"
-      ml="14px"
       alignItems="center"
       px="15px"
+      mx="15px"
     >
       <Image
         source={BuyBookImage}
@@ -35,9 +35,10 @@ export function BuyPhysicalBookFooter({
         <Button variant="unstyled" px={0} py={0} onPress={() => Linking.openURL(linkPurchase)}>
           <Text
             fontFamily="inriaRegular"
-            fontSize={RFValue(23)}
+            fontSize='2xl'
             color="red.900"
             mt="10px"
+            noOfLines={1}
           >
             COMPRAR O LIVRO FÍSICO
           </Text>
@@ -48,6 +49,7 @@ export function BuyPhysicalBookFooter({
           color="gray.900"
           mb="16px"
           ml="2px"
+          noOfLines={1}
         >
           Perfis ativos têm 10% de desconto!
         </Text>

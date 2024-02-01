@@ -2,7 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { Button, HStack, Switch, Text, VStack } from "native-base";
 import { useEffect, useState } from "react";
-import { RFValue } from "react-native-responsive-fontsize";
 import { useAuth } from "./../hooks/auth";
 import { api } from "./../services/api";
 
@@ -70,21 +69,23 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
       <HStack
         alignItems="flex-start"
         justifyContent="space-between"
+        w="100%"
       >
-        <VStack>
+        <VStack w="30%">
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize={RFValue(15)}
+            fontSize='lg'
           >
             Status:
           </Text>
           <Text
             fontFamily="inriaRegular"
-            color={`${user?.isSigned ? 'teal.300' : 'gray.300'}`}
-            fontSize={RFValue(16)}
+            color={`${!user?.isSigned ? 'teal.300' : 'gray.300'}`}
+            fontSize='xl'
+            noOfLines={1}
           >
-            {user?.isSigned ? 'Ativa' : 'Desativada'}
+            {!user?.isSigned ? 'Ativa' : 'Desativada'}
           </Text>
         </VStack>
 
@@ -92,22 +93,22 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize={RFValue(15)}
+            fontSize='lg'
           >
-            {user?.isSigned ? 'Vigência' : 'Primeiro Acesso'}
+            {!user?.isSigned ? 'Vigência' : 'Primeiro Acesso'}
           </Text>
           <Text
             fontFamily="inriaRegular"
             color="teal.300"
-            fontSize={RFValue(16)}
+            fontSize='xl'
           >
-            {user?.isSigned ? 'até 03/01/2024' : user ? `${firstAccess}` : '03 de Outubro 2023'}
+            {!user?.isSigned ? 'até 03/01/2024' : user ? `${firstAccess}` : '03 de Outubro 2023'}
           </Text>
         </VStack>
       </HStack>
 
       {
-        user?.isSigned ?
+        !user?.isSigned ?
           <VStack>
             <HStack alignItems="center">
               <Switch
@@ -123,7 +124,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
               <Text
                 fontFamily="inriaRegular"
                 color="white"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 ml={1}
               >Renovar automático</Text>
             </HStack>
@@ -138,7 +139,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
               <Text
                 fontFamily="inriaRegular"
                 color="red.900"
-                fontSize={RFValue(12)}
+                fontSize='lg'
                 textAlign="right"
               >
                 cancelar assinatura
@@ -151,7 +152,6 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
             rounded="30px"
             minW="283px"
             w="100%"
-            h="56px"
             py={0}
             borderWidth={1}
             borderColor="teal.300"
@@ -162,7 +162,7 @@ export function CardToggleSubscription({ onCloseModal }: CardToggleSubscriptionP
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize={RFValue(14)}
+              fontSize='lg'
               textAlign="center"
             >
               Conheça nossos planos, e 

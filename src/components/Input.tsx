@@ -7,7 +7,7 @@ export function Input({ ...rest }: IInputProps) {
       {...rest}
       bg="gray.100"
       rounded="5px"
-      h={10}
+      h="fit-content"
       px={4}
       fontSize={RFValue(16)}
       fontFamily="body"

@@ -30,20 +30,20 @@ export function UserProfile({ navigation }: UserProfileProps) {
   return (
     <VStack
       flex={1}
-      alignItems="flex-start"
+      alignItems="center"
       justifyContent="flex-start"
       bg="background"
     >
       <Header />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} w="100%">
         <VStack
           mt="75px"
-          px="40px"
           alignItems="center"
+          justifyContent="center"
         >
           <Text
             fontFamily="inriaRegular"
-            fontSize={RFValue(24)}
+            fontSize='3xl'
             color="red.900"
             textAlign="center"
           >
@@ -106,10 +106,10 @@ export function UserProfile({ navigation }: UserProfileProps) {
           w="100%"
           px="36px"
         >
-          <VStack>
+          <VStack w="100%">
             <Text
               fontFamily="inriaRegular"
-              fontSize={RFValue(15)}
+              fontSize='xl'
               color="gray.900"
               mb="-10px"
             >
@@ -121,7 +121,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
             >
               <Text
                 fontFamily="inriaRegular"
-                fontSize={RFValue(20)}
+                fontSize='2xl'
                 color="gray.300"
               >
                 {user?.name}
@@ -131,7 +131,7 @@ export function UserProfile({ navigation }: UserProfileProps) {
               >
                 <Text
                   fontFamily="inriaRegular"
-                  fontSize={RFValue(20)}
+                  fontSize='2xl'
                   color="blue.100"
                 >
                   Alterar senha
@@ -142,14 +142,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
           <VStack mt={5}>
             <Text
               fontFamily="inriaRegular"
-              fontSize={RFValue(15)}
+              fontSize='xl'
               color="gray.900"
             >
               E-mail vinculado:
             </Text>
             <Text
               fontFamily="inriaRegular"
-              fontSize={RFValue(20)}
+              fontSize='2xl'
               color="gray.300"
             >
               {user?.email}
@@ -158,14 +158,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
           <VStack mt={5}>
             <Text
               fontFamily="inriaRegular"
-              fontSize={RFValue(15)}
+              fontSize='xl'
               color="gray.900"
             >
               Primeiro acesso:
             </Text>
             <Text
               fontFamily="inriaRegular"
-              fontSize={RFValue(20)}
+              fontSize='2xl'
               color="gray.300"
             >
               {new Date(user?.createdAt).toLocaleDateString('pt-BR', {
@@ -184,14 +184,14 @@ export function UserProfile({ navigation }: UserProfileProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.900"
-                fontSize={RFValue(15)}
+                fontSize='xl'
               >
                 Status da conta:
               </Text>
               <Text
                 fontFamily="inriaRegular"
                 color="blue.100"
-                fontSize={RFValue(16)}
+                fontSize='xl'
               >
                 {user?.isSigned ? 'Ativa' : 'Desativada'}
               </Text>
@@ -201,32 +201,33 @@ export function UserProfile({ navigation }: UserProfileProps) {
               <Text
                 fontFamily="inriaRegular"
                 color="gray.900"
-                fontSize={RFValue(15)}
+                fontSize='xl'
               >
                 Vigência
               </Text>
               <Text
                 fontFamily="inriaRegular"
                 color="blue.100"
-                fontSize={RFValue(16)}
+                fontSize='xl'
               >
                 até 03/01/2024
               </Text>
             </VStack>
           </HStack>
-          <Button
-            variant="link"
-            mt={9}
-          >
-            <Text
-              fontFamily="inriaRegular"
-              fontSize={RFValue(20)}
-              color="blue.100"
-            >
-              Mudar método de pagamento
-            </Text>
-          </Button>
         </VStack>
+        <Button
+          variant="link"
+          mt={9}
+          w="100%"
+        >
+          <Text
+            fontFamily="inriaRegular"
+            fontSize='2xl'
+            color="blue.100"
+          >
+            Mudar método de pagamento
+          </Text>
+        </Button>
         <HStack
           mt="35px"
           mb="40px"

@@ -43,13 +43,12 @@ export function Plans({ navigation }: PlansProps | any) {
           <Text
             fontFamily="inriaRegular"
             color="white"
-            fontSize={RFValue(25)}
+            fontSize="3xl"
             textAlign="center"
-            w="68%"
             mt={6}
             lineHeight={"32px"}
           >
-            Escolha seu {'\n'} plano de assinatura e
+            Escolha seu {'\n'} plano de assinatura {'\n'} e
             <Text
               fontFamily="inriaBold"
             >
@@ -88,7 +87,7 @@ export function Plans({ navigation }: PlansProps | any) {
 
           <Button
             title="Já sou assinante"
-            w="194px"
+            w="fit-content"
             mt={6}
             h={38}
             fontSize={RFValue(20)}

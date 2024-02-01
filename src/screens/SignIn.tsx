@@ -201,7 +201,6 @@ export function SignIn({ navigation }: SignInProps) {
             isLoading={isLoading}
             title="Entrar"
             w="80%"
-            h="40px"
             mt={6}
             onPress={handleSubmit(handleSignIn)}
           />
@@ -212,7 +211,7 @@ export function SignIn({ navigation }: SignInProps) {
             <Text
               fontFamily="inriaRegular"
               color="white"
-              fontSize={RFValue(22)}
+              fontSize='xl'
               lineHeight="40px"
               marginTop="6px"
             >

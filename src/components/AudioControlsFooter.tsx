@@ -1,9 +1,15 @@
-import { Image, Text, VStack } from "native-base";
+import { Button, Image, Text, VStack } from "native-base";
 
 import BookCoverImage from '@assets/bookCover.png';
-import { RFValue } from "react-native-responsive-fontsize";
+import { useNavigation } from "@react-navigation/native";
 
 export function AudioControlsFooter() {
+  const navigation = useNavigation<any>()
+
+  function handleNavigatePlayer() {
+    navigation.navigate('Player')
+  }
+
   return (
     <VStack
       bg="gray.100"
@@ -14,7 +20,7 @@ export function AudioControlsFooter() {
       position="absolute"
       bottom={0}
     >
-      <Image 
+      <Image
         source={BookCoverImage}
         alt="Capa do livro"
         position="absolute"
@@ -23,23 +29,32 @@ export function AudioControlsFooter() {
         resizeMode="contain"
         resizeMethod="resize"
       />
-      <Text
-        fontSize={RFValue(20)}
-        fontFamily="inriaRegular"
-        color="red.900"
-        ml="30px"
-        mt="16px"
+      <VStack
+        ml={10}
+        alignItems="flex-start"
       >
-        {'CONTINUAR OUVINDO >'}
-      </Text>
-      <Text
-        fontSize={RFValue(16)}
-        fontFamily="inriaRegular"
-        color="gray.300"
-        ml="22px"
-      >
-        Reiniciar o capítulo recente.
-      </Text>
+        <Button
+          variant="unstyled"
+          p={0}
+          onPress={handleNavigatePlayer}
+        >
+          <Text
+            fontSize="xl"
+            fontFamily="inriaRegular"
+            color="red.900"
+            mt="16px"
+          >
+            {'CONTINUAR OUVINDO >'}
+          </Text>
+        </Button>
+        <Text
+          fontSize='lg'
+          fontFamily="inriaRegular"
+          color="gray.300"
+        >
+          Reiniciar o capítulo recente.
+        </Text>
+      </VStack>
     </VStack>
   )
 }

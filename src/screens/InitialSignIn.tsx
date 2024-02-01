@@ -20,7 +20,7 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
   }
 
   return (
-    <VStack flex={1} alignItems="center" justifyContent="flex-start" px={30}>
+    <VStack flex={1} alignItems="center" justifyContent="flex-start">
       <Image
         source={BackgroundImage}
         alt="Biblioteca"
@@ -39,19 +39,22 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
       <Text
         fontFamily="heading"
         color="white"
-        fontSize={RFValue(30)}
+        fontSize='4xl'
         textAlign="center"
         lineHeight="40px"
-        w={RFValue(246)}
         marginTop={10}
       >
-        O acervo da editora Cultor de Livros, como conselhos ao pé do ouvido.
+        O acervo da editora {`\n`} 
+        Cultor de Livros, {`\n`} 
+        como conselhos ao {`\n`} 
+        pé do ouvido.
       </Text>
       <Button
-        width={268}
-        height={52}
+        width={RFValue(268)}
         mt={12}
         title="Acessar"
+        display="flex"
+        alignItems="center"
         onPress={handleNavigateSignIn}
       />
       <ButtonNativeBase
@@ -61,7 +64,7 @@ export function InitialSignIn({ navigation }: InitialSignInProps) {
         <Text
           fontFamily="inriaRegular"
           color="white"
-          fontSize={RFValue(22)}
+          fontSize='2xl'
           lineHeight="40px"
           marginTop="6px"
         >

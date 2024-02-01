@@ -12,7 +12,7 @@ interface ButtonProps extends IButtonProps {
 
 export function Button({
   title,
-  fontSize = RFValue(25),
+  fontSize = 25,
   fontFamily = "jostRegular",
   rounded = 10,
   isLoading = false,
@@ -22,7 +22,7 @@ export function Button({
     <ButtonNativeBase
       {...rest}
       _text={{
-        fontSize: `${fontSize}px`,
+        fontSize: `${RFValue(fontSize)}`,
         fontFamily: `${fontFamily}`
       }}
       _pressed={{
@@ -32,6 +32,7 @@ export function Button({
       bg="red.900"
       borderRadius={rounded}
       py={0}
+      h="fit-content"
     >{isLoading ? <ActivityIndicator size="large" color="white" /> : title}</ButtonNativeBase>
   )
 }

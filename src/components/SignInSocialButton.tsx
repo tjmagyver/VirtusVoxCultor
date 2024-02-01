@@ -23,7 +23,7 @@ export function SignInSocialButton({
       {...rest}
       bg={bg}
       h={10}
-      w="257px"
+      w='fit-content'
       rounded={30}
       _text={{
         color: `${textColor}`,

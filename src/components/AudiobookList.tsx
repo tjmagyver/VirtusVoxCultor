@@ -49,6 +49,7 @@ export function AudiobookList({
             fontFamily="inriaRegular"
             fontStyle="italic"
             color="gray.300"
+            w="83%"
           >
             {legend}
           </Text>
